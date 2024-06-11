@@ -1,12 +1,15 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+# pkgdown <img src="man/figures/logo.png" align="right" />
+
 # butlerrr
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of butlerrr is to …
+The goal of `butlerrr` is to provide helper and convenience (hence the
+name) functions for some recurring R coding operations.
 
 ## Installation
 

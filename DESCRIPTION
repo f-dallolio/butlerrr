@@ -1,9 +1,9 @@
 Package: butlerrr
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Helper and Convenience Functions for Recurring Coding Operations
 Version: 0.1.0
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: The goal of butlerrr is to provide helper and convenience (hence the name) functions for some recurring R coding operations.
+    These include, but not limited to operations with symbols, calls, functions, strings etc.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -13,4 +13,4 @@ BugReports: https://github.com/f-dallolio/butlerrr/issues
 Roxygen: list(markdown = TRUE)
 Imports: 
     lobstr
-Authors@R: person("Filippo", "Dall'Olio", email = "fdallolio@brocku.ca", role = "aut")
+Authors@R: person("Filippo", "Dall'Olio", email = "fdallolio@brocku.ca", role = c("aut", "cre"))
