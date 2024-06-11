@@ -6,7 +6,7 @@
 \alias{any2}
 \alias{not_all}
 \alias{not_any}
-\title{Extensions of \code{\link[base:all]{base::all()}} and \code{\link[base:any]{base::any()}} plus their negations.}
+\title{Extensions of \link[base:all]{base::all} and \link[base:any]{base::any} plus their negations.}
 \usage{
 all2(.x, .p = identity, ...)
 
@@ -27,5 +27,5 @@ not_any(.x, .p = identity, ...)
 TRUE or FALSE.
 }
 \description{
-Extensions of \code{\link[base:all]{base::all()}} and \code{\link[base:any]{base::any()}} plus their negations.
+Extensions of \link[base:all]{base::all} and \link[base:any]{base::any} plus their negations.
 }

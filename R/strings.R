@@ -67,7 +67,25 @@ str_enum <- function(x, sep = ": ", pad_num = TRUE, format_str = TRUE){
 
 
 
-str_embrace <- function(x, left, right = left, .c = NULL, ...){
+#' Embrace Strings
+#'
+#' @param x a character vector or an object coercible to one.
+#' @param left,right a string.
+#' @param type one of `c("round", "squared", "curly", "angle")`. The type of parentheses.
+#' @param .c collapser. A string, a function, or a formula. It defines how strings in the vector are collapsed. If NULL (default), the embracing gets applied to each element of the input.
+#' @param ... optional arguments of `.c`.
+#'
+#' @return a string or a character vector.
+#' @name string-embrace
+NULL
+#'
+#' @rdname string-embrace
+#' @export
+str_embrace <- function(x,
+                        left,
+                        right = left,
+                        .c = NULL,
+                        ...){
   stopifnot(is.character(left) && is.character(right))
   if(!is.null(.c)){
     if(is.character(.c)) {
@@ -86,9 +104,13 @@ str_embrace <- function(x, left, right = left, .c = NULL, ...){
   }
   paste0(left, x, right)
 }
+#'
+#' @rdname string-embrace
+#' @export
 str_parens <- function(x,
                        type = c("round", "squared", "curly", "angle"),
-                       .c = NULL, ...){
+                       .c = NULL,
+                       ...){
   type <- match.arg(type)
   switch(type,
          "round" = str_embrace(x, left = "(", right = ")", .c = .c, ...),
@@ -98,12 +120,45 @@ str_parens <- function(x,
 }
 
 
-str_oxford <- function(x){
-  stringr::str_flatten_comma(x, last = ", and ")
+#' Collapse a character vector using Oxford Comma
+#'
+#' @param x a character vector.
+#' @param or TRUE or FALSE. If TRUE, the last element is coillapsed using 'or'. If FALSE (default), the character is collapsed using 'and'.
+#'
+#' @return a string.
+#' @examples
+#' str_oxford(letters[1 : 2])
+#' str_oxford(letters[1 : 4])
+#' str_oxford(letters[1 : 4], or = TRUE)
+#'
+#' @export
+str_oxford <- function(x, or = FALSE){
+  if(or){
+    stringr::str_flatten_comma(x, last = ", or ")
+  } else {
+    stringr::str_flatten_comma(x, last = ", and ")
+  }
 }
 
 
 
+
+#' Convert Strings to Symbolic Objects (generalizes [base::str2lang])
+#'
+#' @param x a string or a character vector.
+#' @param strict TRUE or FALSE (default). If TRUE, only strings are accepted as input. Other objects will throw an error even if coercible to strings/character.
+#'
+#' @return a symbolic object or a lsit of symbolic objects.
+#' @examples
+#' str_to_symbolic("mean")
+#' str_to_symbolic("mean(1:10)")
+#' str_to_symbolic("+")
+#' chr_to_symbolic(c("a", "c", "d", "e"))
+#' @name string-to-symbolic
+NULL
+#'
+#' @rdname string-to-symbolic
+#' @export
 str_to_symbolic <- function(x, strict = FALSE){
   if(!is.character(x)){
     if(strict){
@@ -120,6 +175,9 @@ str_to_symbolic <- function(x, strict = FALSE){
   }
   out
 }
+#'
+#' @rdname string-to-symbolic
+#' @export
 chr_to_symbolic <- function(x, strict = FALSE){
   if(rlang::is_symbolic(x)){
     str_to_symbolic(x)
