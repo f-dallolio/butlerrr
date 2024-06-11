@@ -8,13 +8,13 @@
 \alias{not_any}
 \title{Extensions of \link[base:all]{base::all} and \link[base:any]{base::any} plus their negations.}
 \usage{
-all2(.x, .p = identity, ...)
+all2(.x, .p, ...)
 
-any2(.x, .p = identity, ...)
+any2(.x, .p, ...)
 
-not_all(.x, .p = identity, ...)
+not_all(.x, .p, ...)
 
-not_any(.x, .p = identity, ...)
+not_any(.x, .p, ...)
 }
 \arguments{
 \item{.x}{an R object (ideally a list or vector).}

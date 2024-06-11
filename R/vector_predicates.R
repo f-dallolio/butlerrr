@@ -10,7 +10,7 @@ NULL
 #'
 #' @rdname vectorised-predicates
 #' @export
-all2 <- function(.x, .p = identity, ...){
+all2 <- function(.x, .p, ...){
   if(!is.vector(.x)) .x <- list(.x)
   out <- vapply(.x, as_function(.p), logical(1), ...)
   all(out)
@@ -18,7 +18,7 @@ all2 <- function(.x, .p = identity, ...){
 #'
 #' @rdname vectorised-predicates
 #' @export
-any2 <- function(.x, .p = identity, ...){
+any2 <- function(.x, .p, ...){
   if(!is.vector(.x)) .x <- list(.x)
   out <- vapply(.x, as_function(.p), logical(1), ...)
   any(out)
@@ -26,14 +26,14 @@ any2 <- function(.x, .p = identity, ...){
 #'
 #' @rdname vectorised-predicates
 #' @export
-not_all <- function(.x, .p = identity, ...){
+not_all <- function(.x, .p, ...){
   if(!is.vector(.x)) .x <- list(.x)
   !all2(.x = .x, .p = .p, ...)
 }
 #'
 #' @rdname vectorised-predicates
 #' @export
-not_any <- function(.x, .p = identity, ...){
+not_any <- function(.x, .p, ...){
   if(!is.vector(.x)) .x <- list(.x)
   !any2(.x = .x, .p = .p, ...)
 }
