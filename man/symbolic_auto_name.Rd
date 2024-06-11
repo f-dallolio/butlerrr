@@ -13,11 +13,11 @@ symbolic_auto_name(
 \arguments{
 \item{x}{a list of symbolic objects.}
 
-\item{.names_type}{one of `c("full", "sym", "head")`.
+\item{.names_type}{one of \code{c("full", "sym", "head")}.
 \describe{
-   \item{"full"}{The output is equivalent to `deparse(x)`.}
-   \item{"sym"}{The function returns the string equivalent of a symbol `x` is a symbol or a call with no arguments.}
-   \item{"head"}{The function returns only the string equivalent of a symbol or the call name.}
+\item{"full"}{The output is equivalent to \code{deparse(x)}.}
+\item{"sym"}{The function returns the string equivalent of a symbol \code{x} is a symbol or a call with no arguments.}
+\item{"head"}{The function returns only the string equivalent of a symbol or the call name.}
 }}
 }
 \value{

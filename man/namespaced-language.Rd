@@ -17,9 +17,9 @@ is_ns_call(x, ns = NULL, private = NULL)
 
 \item{private}{NULL, TRUE, or FALSE.
 \describe{
-   \item{NULL (default)}{The function returns TRUE whether the object is exported from the namespace or not.}
-   \item{TRUE}{The function returns TRUE if it represents an object not exported from the namespace (i.e. `:::`).}
-   \item{FALSE}{The function returns TRUE if it represents an object not exported from the namespace (i.e. `::`).}
+\item{NULL (default)}{The function returns TRUE whether the object is exported from the namespace or not.}
+\item{TRUE}{The function returns TRUE if it represents an object not exported from the namespace (i.e. \code{:::}).}
+\item{FALSE}{The function returns TRUE if it represents an object not exported from the namespace (i.e. \code{::}).}
 }}
 }
 \value{

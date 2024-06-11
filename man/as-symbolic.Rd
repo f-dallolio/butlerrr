@@ -33,26 +33,28 @@ symcs(
 
 \item{...}{R objects as above.}
 
-\item{.x}{a list of R objects. It gets appended to `...`.}
+\item{.x}{a list of R objects. It gets appended to \code{...}.}
 
-\item{.named}{TRUE or FALSE. If `TRUE` (default), the unnamed elements of the output of `as_symbolic_objs` are automatically named.}
+\item{.named}{TRUE or FALSE. If \code{TRUE} (default), the unnamed elements of the output of \code{as_symbolic_objs} are automatically named.}
 
-\item{.name_all}{TRUE or FALSE. If `TRUE` (default), all elements of the output of `as_symbolic_objs` are automatically named.}
+\item{.name_all}{TRUE or FALSE. If \code{TRUE} (default), all elements of the output of \code{as_symbolic_objs} are automatically named.}
 
-\item{.names_type}{one of `c("full", "sym", "head")`.
+\item{.names_type}{one of \code{c("full", "sym", "head")}.
 \describe{
-   \item{"full"}{The output is equivalent to `deparse(x)`.}
-   \item{"sym"}{The function returns the string equivalent of a symbol `x` is a symbol or a call with no arguments.}
-   \item{"head"}{The function returns only the string equivalent of a symbol or the call name.}
+\item{"full"}{The output is equivalent to \code{deparse(x)}.}
+\item{"sym"}{The function returns the string equivalent of a symbol \code{x} is a symbol or a call with no arguments.}
+\item{"head"}{The function returns only the string equivalent of a symbol or the call name.}
 }}
 }
 \value{
 a symbolic object. That is, a symbol or a call.
 }
 \description{
-These functions take various R objects and return the equivalent symbols orcalls (e.g. `"func"` to `func`, `"pkg::func(x, ...)"` to `pkg::func(x, ...)`, etc.`).
-* [as_symbolic_obj()] returns a symbolic.
-* [as_symbolic_objs()] returns a list of symbolics if length of input greater than one. A symbolic otherwise.
+These functions take various R objects and return the equivalent symbols orcalls (e.g. \code{"func"} to \code{func}, \code{"pkg::func(x, ...)"} to \code{pkg::func(x, ...)}, etc.`).
+\itemize{
+\item \code{\link[=as_symbolic_obj]{as_symbolic_obj()}} returns a symbolic.
+\item \code{\link[=as_symbolic_objs]{as_symbolic_objs()}} returns a list of symbolics if length of input greater than one. A symbolic otherwise.
+}
 }
 \examples{
 as_symbolic_obj(quote(mean))

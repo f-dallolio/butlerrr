@@ -6,7 +6,7 @@
 \alias{any2}
 \alias{not_all}
 \alias{not_any}
-\title{Extensions of [base::all()] and [base::any()] plus their negations.}
+\title{Extensions of \code{\link[base:all]{base::all()}} and \code{\link[base:any]{base::any()}} plus their negations.}
 \usage{
 all2(.x, .p = identity, ...)
 
@@ -19,7 +19,7 @@ not_any(.x, .p = identity, ...)
 \arguments{
 \item{.x}{an R object (ideally a list or vector).}
 
-\item{.p}{a function call, a formula, or a string. It uses a simplified version of [rlang::as_function()].}
+\item{.p}{a function call, a formula, or a string. It uses a simplified version of \code{\link[rlang:as_function]{rlang::as_function()}}.}
 
 \item{...}{additional arguments.}
 }
@@ -27,5 +27,5 @@ not_any(.x, .p = identity, ...)
 TRUE or FALSE.
 }
 \description{
-Extensions of [base::all()] and [base::any()] plus their negations.
+Extensions of \code{\link[base:all]{base::all()}} and \code{\link[base:any]{base::any()}} plus their negations.
 }

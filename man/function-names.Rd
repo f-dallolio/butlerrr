@@ -13,12 +13,12 @@ fn_names(x, with_ns = TRUE, strict = FALSE)
 \arguments{
 \item{with_ns}{TRUE or FALSE. If TRUE (default), the function name(s) includes the namespace.}
 
-\item{strict}{TRUE or FALSE. If FALSE (default) and `x` is not a function, the function will return `NA`. It will throw an error otherwise.}
+\item{strict}{TRUE or FALSE. If FALSE (default) and \code{x} is not a function, the function will return \code{NA}. It will throw an error otherwise.}
 
 \item{x}{a function.}
 }
 \value{
-a string (`fn_name`) or a character vector (`fn_names`).
+a string (\code{fn_name}) or a character vector (\code{fn_names}).
 }
 \description{
 Get function names from functions

@@ -15,7 +15,7 @@ fn_calls(x, with_ns = TRUE, strict = FALSE)
 
 \item{with_ns}{TRUE or FALSE. If TRUE (default), the call includes the namespace.}
 
-\item{strict}{TRUE or FALSE. If FALSE (default) and `x` is not a function, the function will return NULL. It will throw an error otherwise.}
+\item{strict}{TRUE or FALSE. If FALSE (default) and \code{x} is not a function, the function will return NULL. It will throw an error otherwise.}
 }
 \value{
 a call or a list of calls.

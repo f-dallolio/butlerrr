@@ -14,24 +14,26 @@ encalls(..., .x = NULL, .named = FALSE, .name_all = FALSE, .names_type = NULL)
 
 \item{...}{R objects as above.}
 
-\item{.named}{TRUE or FALSE. If `TRUE` (default), the unnamed elements of the output of `as_symbolic_objs` are automatically named.}
+\item{.named}{TRUE or FALSE. If \code{TRUE} (default), the unnamed elements of the output of \code{as_symbolic_objs} are automatically named.}
 
-\item{.name_all}{TRUE or FALSE. If `TRUE` (default), all elements of the output of `as_symbolic_objs` are automatically named.}
+\item{.name_all}{TRUE or FALSE. If \code{TRUE} (default), all elements of the output of \code{as_symbolic_objs} are automatically named.}
 
-\item{.names_type}{one of `c("full", "sym", "head")`.
+\item{.names_type}{one of \code{c("full", "sym", "head")}.
 \describe{
-   \item{"full"}{The output is equivalent to `deparse(x)`.}
-   \item{"sym"}{The function returns the string equivalent of a symbol `x` is a symbol or a call with no arguments.}
-   \item{"head"}{The function returns only the string equivalent of a symbol or the call name.}
+\item{"full"}{The output is equivalent to \code{deparse(x)}.}
+\item{"sym"}{The function returns the string equivalent of a symbol \code{x} is a symbol or a call with no arguments.}
+\item{"head"}{The function returns only the string equivalent of a symbol or the call name.}
 }}
 }
 \value{
-A call (`encall`) or a list of calls (`encalls`).
+A call (\code{encall}) or a list of calls (\code{encalls}).
 }
 \description{
-These functions take various R objects and return the equivalent named calls (e.g. `func(x, ...), pkg::func(x, ...), etc.`).
-* [encall()] returns a named call.
-* [encalls()] returns a list of named calls.
+These functions take various R objects and return the equivalent named calls (e.g. \verb{func(x, ...), pkg::func(x, ...), etc.}).
+\itemize{
+\item \code{\link[=encall]{encall()}} returns a named call.
+\item \code{\link[=encalls]{encalls()}} returns a list of named calls.
+}
 }
 \examples{
 encall(quote(mean))
