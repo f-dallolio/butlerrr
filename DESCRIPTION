@@ -2,8 +2,6 @@ Package: butlerrr
 Type: Package
 Title: What the Package Does (Title Case)
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
 License: MIT + file LICENSE
@@ -15,3 +13,4 @@ BugReports: https://github.com/f-dallolio/butlerrr/issues
 Roxygen: list(markdown = TRUE)
 Imports: 
     lobstr
+Authors@R: person("Filippo", "Dall'Olio", email = "fdallolio@brocku.ca", role = "aut")
