@@ -26,3 +26,21 @@ a string for \code{symbolic_to_str} or a character vector for \code{symbolic_to_
 \description{
 Symbolic to string or character vector
 }
+\examples{
+symbolics <- list(quote(mean), quote(mean()), quote(mean(1:10)))
+
+symbolic_to_str(symbolics[[1]])
+symbolic_to_str(symbolics[[2]])
+symbolic_to_str(symbolics[[3]])
+
+# Different `.names_type`
+symbolic_to_str(symbolics[[2]], .names_type = "full")
+
+symbolic_to_str(symbolics[[2]], .names_type = "sym")
+symbolic_to_str(symbolics[[3]], .names_type = "sym")
+
+symbolic_to_str(symbolics[[3]], .names_type = "head")
+
+# `symbolic_to_chr` converts a list of symbolics in a vector of characters.
+symbolic_to_chr(symbolics)
+}

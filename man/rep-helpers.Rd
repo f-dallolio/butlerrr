@@ -4,7 +4,7 @@
 \alias{rep-helpers}
 \alias{rep_times}
 \alias{rep_each}
-\title{Extensions of \code{\link[base:rep]{base::rep()}}}
+\title{Extensions of \link[base:rep]{base::rep}}
 \usage{
 rep_times(x, times, len = NULL)
 
@@ -21,5 +21,5 @@ rep_each(x, times, len = NULL)
 a vector.
 }
 \description{
-Extensions of \code{\link[base:rep]{base::rep()}}
+Extensions of \link[base:rep]{base::rep}
 }

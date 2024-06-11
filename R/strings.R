@@ -97,6 +97,13 @@ str_parens <- function(x,
          "angle" = str_embrace(x, left = "<", right = ">", .c = .c, ...))
 }
 
+
+str_oxford <- function(x){
+  stringr::str_flatten_comma(x, last = ", and ")
+}
+
+
+
 str_to_symbolic <- function(x, strict = FALSE){
   if(!is.character(x)){
     if(strict){

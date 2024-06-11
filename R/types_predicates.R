@@ -122,3 +122,26 @@ is_call2 <- function (x, name = NULL, n = NULL, ns = NULL, ns_sym_is_call = FALS
   rlang::is_call(x, name = name, n = n, ns = ns)
 }
 
+#' Is an object a call or a symbol?
+#'
+#' @param x an arbitrary R object.
+#'
+#' @return TRUE or FALSE or a vector of logicals.
+#' @name is-symbolic2
+NULL
+#'
+#' @rdname is-symbolic2
+#' @export
+is_symbolic <- function(x){
+  typeof(x) %in% c("language", "symbol")
+}
+#'
+#' @rdname is-symbolic2
+#' @export
+is_symbolic2 <- function(x, all = TRUE){
+  if(all){
+    all2(x, is_symbolic)
+  } else {
+    vapply(x, is_symbolic, logical(1))
+  }
+}
