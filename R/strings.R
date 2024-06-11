@@ -4,6 +4,9 @@
 #' @param pad string. Defaults to "0". The padding on the left side.
 #'
 #' @return a character vector.
+#' @examples
+#' x <- c(1,21,301,401)
+#' str_pad_num(x)
 #' @export
 str_pad_num <- function(x, pad = "0"){
   stopifnot(is.numeric(x) || is_numeric_chr(x))
@@ -27,6 +30,14 @@ str_pad_num <- function(x, pad = "0"){
 #' @param ... other arguments passed to base::format.
 #'
 #' @return character representations of the elements of x in a common format. THat is, aappropriately padded.
+#' @examples
+#' x <- gsub("\\s","_",rownames(mtcars))
+#' str_format(x) #' default: justify - "left
+#' str_format(x, justify = "right")
+#' str_format(x, justify = "centre")
+#' str_format(x, width = 6)
+#' str_format(x, width = 6, ellipsis = "**")
+#'
 #' @export
 str_format <- function(x,
                        width = NULL,
@@ -57,6 +68,15 @@ str_format <- function(x,
 #' @param format_str TRUE or FALSE. If TRUE (default), strings are formatted with str_format.
 #'
 #' @return a character vector.
+#' @examples
+#' x <- gsub("\\s","_",rownames(mtcars))[1:12]
+#' str_enum(x)
+#' # different separator
+#' str_enum(x, sep = "- ")
+#' # numbers are not padded if `pad_num` is FALSE
+#' str_enum(x, pad_num = FALSE)
+#' # strings not of same width if `format_str` is FALSE
+#' str_enum(x, format_str = FALSE)
 #' @export
 str_enum <- function(x, sep = ": ", pad_num = TRUE, format_str = TRUE){
   enum <- seq_along(x)
@@ -76,6 +96,27 @@ str_enum <- function(x, sep = ": ", pad_num = TRUE, format_str = TRUE){
 #' @param ... optional arguments of `.c`.
 #'
 #' @return a string or a character vector.
+#' @examples
+#' x <- gsub("\\s","_",rownames(mtcars))[1:12]
+#' x
+#'
+#' str_embrace(x, left = "-")
+#'
+#' str_embrace(x, left = "-", right = "--")
+#'
+#' str_embrace(x, left = "-", .c = str_oxford)
+#'
+#' str_parens(x)
+#'
+#' str_parens(x, "round")
+#'
+#' str_parens(x, "round", .c = str_oxford)
+#'
+#' str_parens(x, "squared")
+#'
+#' str_parens(x, "curly")
+#'
+#' str_parens(x, "angle")
 #' @name string-embrace
 NULL
 #'
@@ -128,7 +169,9 @@ str_parens <- function(x,
 #' @return a string.
 #' @examples
 #' str_oxford(letters[1 : 2])
+#'
 #' str_oxford(letters[1 : 4])
+#'
 #' str_oxford(letters[1 : 4], or = TRUE)
 #'
 #' @export
@@ -139,9 +182,6 @@ str_oxford <- function(x, or = FALSE){
     stringr::str_flatten_comma(x, last = ", and ")
   }
 }
-
-
-
 
 #' Convert Strings to Symbolic Objects (generalizes [base::str2lang])
 #'

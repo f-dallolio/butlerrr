@@ -29,3 +29,12 @@ character representations of the elements of x in a common format. THat is, aapp
 \description{
 String formatiing/padding
 }
+\examples{
+x <- gsub("\\\\s","_",rownames(mtcars))
+str_format(x) #' default: justify - "left
+str_format(x, justify = "right")
+str_format(x, justify = "centre")
+str_format(x, width = 6)
+str_format(x, width = 6, ellipsis = "**")
+
+}

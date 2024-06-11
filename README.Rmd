@@ -13,7 +13,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-# pkgdown <img src="man/figures/logo.png" align="right" />
 # butlerrr
 
 <!-- badges: start -->

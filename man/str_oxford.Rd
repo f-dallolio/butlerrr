@@ -19,7 +19,9 @@ Collapse a character vector using Oxford Comma
 }
 \examples{
 str_oxford(letters[1 : 2])
+
 str_oxford(letters[1 : 4])
+
 str_oxford(letters[1 : 4], or = TRUE)
 
 }

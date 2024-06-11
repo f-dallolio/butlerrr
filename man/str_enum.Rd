@@ -21,3 +21,13 @@ a character vector.
 \description{
 Enumerate and format the elements of a character vector.
 }
+\examples{
+x <- gsub("\\\\s","_",rownames(mtcars))[1:12]
+str_enum(x)
+# different separator
+str_enum(x, sep = "- ")
+# numbers are not padded if `pad_num` is FALSE
+str_enum(x, pad_num = FALSE)
+# strings not of same width if `format_str` is FALSE
+str_enum(x, format_str = FALSE)
+}

@@ -17,3 +17,7 @@ a character vector.
 \description{
 Padding of character vector of integers
 }
+\examples{
+x <- c(1,21,301,401)
+str_pad_num(x)
+}
