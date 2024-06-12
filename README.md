@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# butlerrr
+# butlerrr <a href="https://f-dallolio.github.io/butlerrr/"><img src="man/figures/logo.png" align="right" height="139" alt="butlerrr website" /></a>
 
 <!-- badges: start -->
 <!-- badges: end -->
