@@ -22,16 +22,17 @@ devtools::install_github("f-dallolio/butlerrr")
 ## Why `Butlerrr`?
 
 `Butlerrr` provides helper and convenience functions to help with the
-coding and manipulation of different kinds of R objects. Here some
-examples.
-
-### Symbolic objects and calls
+coding and manipulation of different kinds of R objects.
 
 Some of the most important functions in `butlerrr` deal with symbolic
-objects and calls. Specifically, `symc` (alias for `as_symbolic_obj`)
-and `encall`, as well as their vectorized equivalents `symcs`
-(`as_symbolic_objs`) and `encalls`, convert arbitrary R objects in
-symbolic objects (symbols or calls) and calls.
+objects and calls.
+
+Specifically, `symc` (alias for `as_symbolic_obj`) and `encall`, as well
+as their vectorized equivalents `symcs` (`as_symbolic_objs`) and
+`encalls`, convert arbitrary R objects in symbolic objects (symbols or
+calls) and calls.
+
+### Symbolic objects
 
 Some exaples for symbolic objects with `symc` (or `as_symbolic_obj`)…
 
@@ -88,6 +89,8 @@ symcs("mean", b = "mean()", mean, .x = x, .named = TRUE)
 #> $`1`
 #> `1`
 ```
+
+### Calls
 
 `encall` and `encalls` do the same but convert objects to “named” calls
 (e.g. in the form `func(args)`).
