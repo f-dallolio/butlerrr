@@ -8,7 +8,6 @@
 #' @return TRUE or FALSE.
 #' @name vectorised-predicates
 NULL
-#'
 #' @rdname vectorised-predicates
 #' @export
 all2 <- function(.x, .p, ...) {
@@ -16,7 +15,6 @@ all2 <- function(.x, .p, ...) {
   out <- vapply(.x, as_function(.p), logical(1), ...)
   all(out)
 }
-#'
 #' @rdname vectorised-predicates
 #' @export
 any2 <- function(.x, .p, ...) {
@@ -24,14 +22,12 @@ any2 <- function(.x, .p, ...) {
   out <- vapply(.x, as_function(.p), logical(1), ...)
   any(out)
 }
-#'
 #' @rdname vectorised-predicates
 #' @export
 not_all <- function(.x, .p, ...) {
   if (!is.vector(.x)) .x <- list(.x)
   !all2(.x = .x, .p = .p, ...)
 }
-#'
 #' @rdname vectorised-predicates
 #' @export
 not_any <- function(.x, .p, ...) {
