@@ -82,7 +82,7 @@
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"f-dallolio/butlerrr"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="why-butlerrr">Why <code>Butlerrr</code>?<a class="anchor" aria-label="anchor" href="#why-butlerrr"></a>
+<h2 id="why-butlerrr">Why <code>butlerrr</code>?<a class="anchor" aria-label="anchor" href="#why-butlerrr"></a>
 </h2>
 <p><code>Butlerrr</code> provides helper and convenience functions to help with the coding and manipulation of different kinds of R objects.</p>
 <p>Some of the most important functions in <code>butlerrr</code> deal with symbolic objects and calls.</p>
@@ -113,7 +113,7 @@
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[3]]</span></span>
 <span><span class="co">#&gt; base::mean(x, ...)</span></span></code></pre></div>
-<p><code>symcs</code> (and <code>as_symbolic_objs</code>) also includes an argument called <code>.x</code> for vector inputs that gets appended to the elements of <code>...</code> and arguments for naming. For example, <code>.named</code> that if <code>TRUE</code> automatically names the unnamed elements of the resulting list.</p>
+<p><code>symcs</code> (and <code>as_symbolic_objs</code>) also include an argument called <code>.x</code> for vector inputs that gets appended to the elements of <code>...</code> and arguments for naming. For example, <code>.named</code> that if <code>TRUE</code> automatically names the unnamed elements of the resulting list.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/as-symbolic.html">symcs</a></span><span class="op">(</span><span class="st">"mean"</span>, b <span class="op">=</span> <span class="st">"mean()"</span>, <span class="va">mean</span>, .x <span class="op">=</span> <span class="va">x</span>, .named <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $mean</span></span>
