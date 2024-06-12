@@ -83,11 +83,12 @@
 <div class="section level2">
 <h2 id="why-butlerrr">Why <code>Butlerrr</code>?<a class="anchor" aria-label="anchor" href="#why-butlerrr"></a>
 </h2>
-<p><code>Butlerrr</code> provides helper and convenience functions to help with the coding and manipulation of different kinds of R objects. Here some examples.</p>
+<p><code>Butlerrr</code> provides helper and convenience functions to help with the coding and manipulation of different kinds of R objects.</p>
+<p>Some of the most important functions in <code>butlerrr</code> deal with symbolic objects and calls.</p>
+<p>Specifically, <code>symc</code> (alias for <code>as_symbolic_obj</code>) and <code>encall</code>, as well as their vectorized equivalents <code>symcs</code> (<code>as_symbolic_objs</code>) and <code>encalls</code>, convert arbitrary R objects in symbolic objects (symbols or calls) and calls.</p>
 <div class="section level3">
-<h3 id="symbolic-objects-and-calls">Symbolic objects and calls<a class="anchor" aria-label="anchor" href="#symbolic-objects-and-calls"></a>
+<h3 id="symbolic-objects">Symbolic objects<a class="anchor" aria-label="anchor" href="#symbolic-objects"></a>
 </h3>
-<p>Some of the most important functions in <code>butlerrr</code> deal with symbolic objects and calls. Specifically, <code>symc</code> (alias for <code>as_symbolic_obj</code>) and <code>encall</code>, as well as their vectorized equivalents <code>symcs</code> (<code>as_symbolic_objs</code>) and <code>encalls</code>, convert arbitrary R objects in symbolic objects (symbols or calls) and calls.</p>
 <p>Some exaples for symbolic objects with <code>symc</code> (or <code>as_symbolic_obj</code>)…</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/f-dallolio/butlerrr" class="external-link">butlerrr</a></span><span class="op">)</span></span>
@@ -128,6 +129,10 @@
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`1`</span></span>
 <span><span class="co">#&gt; `1`</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="calls">Calls<a class="anchor" aria-label="anchor" href="#calls"></a>
+</h3>
 <p><code>encall</code> and <code>encalls</code> do the same but convert objects to “named” calls (e.g. in the form <code>func(args)</code>).</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/encall.html">encall</a></span><span class="op">(</span><span class="st">"mean"</span><span class="op">)</span></span>
@@ -139,8 +144,7 @@
 <code class="sourceCode R"><span><span class="fu"><a href="reference/encall.html">encall</a></span><span class="op">(</span><span class="va">mean</span><span class="op">)</span></span>
 <span><span class="co">#&gt; base::mean(x, ...)</span></span></code></pre></div>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"sd"</span>, <span class="fl">1</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"sd"</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/encall.html">encalls</a></span><span class="op">(</span><span class="st">"mean"</span>, <span class="st">"mean()"</span>, <span class="va">mean</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [[1]]</span></span>
 <span><span class="co">#&gt; mean()</span></span>
@@ -166,20 +170,6 @@
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $``1`()`</span></span>
 <span><span class="co">#&gt; `1`()</span></span></code></pre></div>
-<p>What is special about using <code>README.Rmd</code> instead of just <code>README.md</code>? You can include R chunks like so:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span></span>
-<span><span class="co">#&gt;      speed           dist       </span></span>
-<span><span class="co">#&gt;  Min.   : 4.0   Min.   :  2.00  </span></span>
-<span><span class="co">#&gt;  1st Qu.:12.0   1st Qu.: 26.00  </span></span>
-<span><span class="co">#&gt;  Median :15.0   Median : 36.00  </span></span>
-<span><span class="co">#&gt;  Mean   :15.4   Mean   : 42.98  </span></span>
-<span><span class="co">#&gt;  3rd Qu.:19.0   3rd Qu.: 56.00  </span></span>
-<span><span class="co">#&gt;  Max.   :25.0   Max.   :120.00</span></span></code></pre></div>
-<p>You’ll still need to render <code>README.Rmd</code> regularly, to keep <code>README.md</code> up-to-date. <code>devtools::build_readme()</code> is handy for this.</p>
-<p>You can also embed plots, for example:</p>
-<p><img src="reference/figures/README-pressure-1.png" width="100%"></p>
-<p>In that case, don’t forget to commit and push the resulting figure files, so they display on GitHub and CRAN.</p>
 </div>
 </div>
 </div>
