@@ -15,11 +15,14 @@ str_parens(x, type = c("round", "squared", "curly", "angle"), .c = NULL, ...)
 
 \item{left, right}{a string.}
 
-\item{.c}{collapser. A string, a function, or a formula. It defines how strings in the vector are collapsed. If NULL (default), the embracing gets applied to each element of the input.}
+\item{.c}{collapser. A string, a function, or a formula. It defines how
+strings in the vector are collapsed. If NULL (default), the embracing gets
+applied to each element of the input.}
 
 \item{...}{optional arguments of \code{.c}.}
 
-\item{type}{one of \code{c("round", "squared", "curly", "angle")}. The type of parentheses.}
+\item{type}{one of \code{c("round", "squared", "curly", "angle")}. The type of
+parentheses.}
 }
 \value{
 a string or a character vector.
@@ -28,7 +31,7 @@ a string or a character vector.
 Embrace Strings
 }
 \examples{
-x <- gsub("\\\\s","_",rownames(mtcars))[1:12]
+x <- gsub("\\\\s", "_", rownames(mtcars))[1:12]
 x
 
 str_embrace(x, left = "-")

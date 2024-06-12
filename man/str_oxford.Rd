@@ -9,7 +9,8 @@ str_oxford(x, or = FALSE)
 \arguments{
 \item{x}{a character vector.}
 
-\item{or}{TRUE or FALSE. If TRUE, the last element is coillapsed using 'or'. If FALSE (default), the character is collapsed using 'and'.}
+\item{or}{TRUE or FALSE. If TRUE, the last element is coillapsed using 'or'.
+If FALSE (default), the character is collapsed using 'and'.}
 }
 \value{
 a string.
@@ -18,10 +19,10 @@ a string.
 Collapse a character vector using Oxford Comma
 }
 \examples{
-str_oxford(letters[1 : 2])
+str_oxford(letters[1:2])
 
-str_oxford(letters[1 : 4])
+str_oxford(letters[1:4])
 
-str_oxford(letters[1 : 4], or = TRUE)
+str_oxford(letters[1:4], or = TRUE)
 
 }

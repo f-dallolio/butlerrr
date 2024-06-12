@@ -19,7 +19,8 @@ passed to \code{\link[rlang:sym]{sym()}} before matching. This argument is vecto
 and you can supply a vector of names to match. In this case,
 \code{is_call()} returns \code{TRUE} if at least one name matches.}
 
-\item{ns_sym_is_sym}{TRUE or FALSE. If TRUE (default), the function returns TRUE for symbols and a call of the type pkg::fun. FALSE otherwise.}
+\item{ns_sym_is_sym}{TRUE or FALSE. If TRUE (default), the function returns
+TRUE for symbols and a call of the type pkg::fun. FALSE otherwise.}
 
 \item{n}{An optional number of arguments that the call should
 match.}
@@ -34,7 +35,8 @@ Can be a character vector of namespaces, in which case the call
 has to match at least one of them, otherwise \code{is_call()} returns
 \code{FALSE}.}
 
-\item{ns_sym_is_call}{TRUE or FALSE. If TRUE (default), the function returns TRUE for a calls and a call of the type pkg::fun(). FALSE otherwise.}
+\item{ns_sym_is_call}{TRUE or FALSE. If TRUE (default), the function returns
+TRUE for a calls and a call of the type pkg::fun(). FALSE otherwise.}
 }
 \value{
 TRUE or FALSE.

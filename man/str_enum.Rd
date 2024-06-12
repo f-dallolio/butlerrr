@@ -9,11 +9,14 @@ str_enum(x, sep = ": ", pad_num = TRUE, format_str = TRUE)
 \arguments{
 \item{x}{a character vector.}
 
-\item{sep}{a string indicating the separation betweem item numbers and strings.}
+\item{sep}{a string indicating the separation betweem item numbers and
+strings.}
 
-\item{pad_num}{TRUE or FALSE. If TRUE (default), numbers are padded with str_pad_num.}
+\item{pad_num}{TRUE or FALSE. If TRUE (default), numbers are padded with
+str_pad_num.}
 
-\item{format_str}{TRUE or FALSE. If TRUE (default), strings are formatted with str_format.}
+\item{format_str}{TRUE or FALSE. If TRUE (default), strings are formatted
+with str_format.}
 }
 \value{
 a character vector.
@@ -22,7 +25,7 @@ a character vector.
 Enumerate and format the elements of a character vector.
 }
 \examples{
-x <- gsub("\\\\s","_",rownames(mtcars))[1:12]
+x <- gsub("\\\\s", "_", rownames(mtcars))[1:12]
 str_enum(x)
 # different separator
 str_enum(x, sep = "- ")

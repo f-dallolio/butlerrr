@@ -11,9 +11,11 @@ fn_name(fn, with_ns = TRUE, strict = FALSE)
 fn_names(x, with_ns = TRUE, strict = FALSE)
 }
 \arguments{
-\item{with_ns}{TRUE or FALSE. If TRUE (default), the function name(s) includes the namespace.}
+\item{with_ns}{TRUE or FALSE. If TRUE (default), the function name(s)
+includes the namespace.}
 
-\item{strict}{TRUE or FALSE. If FALSE (default) and \code{x} is not a function, the function will return \code{NA}. It will throw an error otherwise.}
+\item{strict}{TRUE or FALSE. If FALSE (default) and \code{x} is not a function,
+the function will return \code{NA}. It will throw an error otherwise.}
 
 \item{x}{a function.}
 }

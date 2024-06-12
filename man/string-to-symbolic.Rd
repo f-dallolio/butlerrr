@@ -13,7 +13,9 @@ chr_to_symbolic(x, strict = FALSE)
 \arguments{
 \item{x}{a string or a character vector.}
 
-\item{strict}{TRUE or FALSE (default). If TRUE, only strings are accepted as input. Other objects will throw an error even if coercible to strings/character.}
+\item{strict}{TRUE or FALSE (default). If TRUE, only strings are accepted as
+input. Other objects will throw an error even if coercible to
+strings/character.}
 }
 \value{
 a symbolic object or a lsit of symbolic objects.

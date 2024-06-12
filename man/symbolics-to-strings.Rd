@@ -21,7 +21,8 @@ symbolic_to_chr(x, .names_type = c("full", "sym", "head"))
 }}
 }
 \value{
-a string for \code{symbolic_to_str} or a character vector for \code{symbolic_to_chr}.
+a string for \code{symbolic_to_str} or a character vector for
+\code{symbolic_to_chr}.
 }
 \description{
 Symbolic to string or character vector

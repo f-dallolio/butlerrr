@@ -5,9 +5,9 @@
 #'
 #' @return TRUE or FALSE.
 #' @export
-is_numeric_chr <- function(x, na.omit = TRUE){
-  if(na.omit) x <- na.omit(x)
-  if(!is.character(x)) x <- as.character(x)
+is_numeric_chr <- function(x, na.omit = TRUE) {
+  if (na.omit) x <- na.omit(x)
+  if (!is.character(x)) x <- as.character(x)
   all(grepl("^[[:digit:]]+$", x))
 }
 
@@ -19,9 +19,9 @@ is_numeric_chr <- function(x, na.omit = TRUE){
 #'
 #' @return TRUE or FALSE.
 #' @export
-is_integer_chr <- function(x, na.omit = TRUE){
-  if(is_numeric_chr(x, na.omit = na.omit)){
-    if(na.omit) x <- na.omit(x)
+is_integer_chr <- function(x, na.omit = TRUE) {
+  if (is_numeric_chr(x, na.omit = na.omit)) {
+    if (na.omit) x <- na.omit(x)
     rlang::is_integerish(as.numeric(x))
   } else {
     FALSE
@@ -38,7 +38,7 @@ is_integer_chr <- function(x, na.omit = TRUE){
 #'    \item{NULL (default)}{The function returns TRUE whether the object is exported from the namespace or not.}
 #'    \item{TRUE}{The function returns TRUE if it represents an object not exported from the namespace (i.e. `:::`).}
 #'    \item{FALSE}{The function returns TRUE if it represents an object not exported from the namespace (i.e. `::`).}
-#'}
+#' }
 #'
 #' @return TRUE or FALSE.
 #' @name namespaced-language
@@ -46,7 +46,7 @@ NULL
 #'
 #' @rdname namespaced-language
 #' @export
-is_ns_sym <- function (x, ns = NULL, private = NULL){
+is_ns_sym <- function(x, ns = NULL, private = NULL) {
   if (typeof(x) != "language") {
     return(FALSE)
   }
@@ -65,7 +65,7 @@ is_ns_sym <- function (x, ns = NULL, private = NULL){
 #'
 #' @rdname namespaced-language
 #' @export
-is_ns_call <- function (x, ns = NULL, private = NULL){
+is_ns_call <- function(x, ns = NULL, private = NULL) {
   if (typeof(x) != "language") {
     return(FALSE)
   }
@@ -80,8 +80,10 @@ is_ns_call <- function (x, ns = NULL, private = NULL){
 #' Extensions of [rlang::is_symbol()] and [rlang::is_call()]
 #'
 #' @inheritParams rlang::is_call
-#' @param ns_sym_is_sym TRUE or FALSE. If TRUE (default), the function returns TRUE for symbols and a call of the type pkg::fun. FALSE otherwise.
-#' @param ns_sym_is_call TRUE or FALSE. If TRUE (default), the function returns TRUE for a calls and a call of the type pkg::fun(). FALSE otherwise.
+#' @param ns_sym_is_sym TRUE or FALSE. If TRUE (default), the function returns
+#'   TRUE for symbols and a call of the type pkg::fun. FALSE otherwise.
+#' @param ns_sym_is_call TRUE or FALSE. If TRUE (default), the function returns
+#'   TRUE for a calls and a call of the type pkg::fun(). FALSE otherwise.
 #'
 #' @return TRUE or FALSE.
 #' @name is-symbol-call-2
@@ -89,9 +91,9 @@ NULL
 #'
 #' @rdname is-symbol-call-2
 #' @export
-is_symbol2 <- function (x, name = NULL, ns_sym_is_sym = TRUE){
-  if(is_ns_sym(x)){
-    if(ns_sym_is_sym){
+is_symbol2 <- function(x, name = NULL, ns_sym_is_sym = TRUE) {
+  if (is_ns_sym(x)) {
+    if (ns_sym_is_sym) {
       x <- x[[3]]
     } else {
       return(FALSE)
@@ -111,9 +113,9 @@ is_symbol2 <- function (x, name = NULL, ns_sym_is_sym = TRUE){
 #'
 #' @rdname is-symbol-call-2
 #' @export
-is_call2 <- function (x, name = NULL, n = NULL, ns = NULL, ns_sym_is_call = FALSE) {
-  if(is_ns_sym(x)){
-    if(ns_sym_is_call){
+is_call2 <- function(x, name = NULL, n = NULL, ns = NULL, ns_sym_is_call = FALSE) {
+  if (is_ns_sym(x)) {
+    if (ns_sym_is_call) {
       x <- as.call(list(x))
     } else {
       return(FALSE)
@@ -132,14 +134,14 @@ NULL
 #'
 #' @rdname is-symbolic2
 #' @export
-is_symbolic <- function(x){
+is_symbolic <- function(x) {
   typeof(x) %in% c("language", "symbol")
 }
 #'
 #' @rdname is-symbolic2
 #' @export
-is_symbolic2 <- function(x, all = TRUE){
-  if(all){
+is_symbolic2 <- function(x, all = TRUE) {
+  if (all) {
     all2(x, is_symbolic)
   } else {
     vapply(x, is_symbolic, logical(1))

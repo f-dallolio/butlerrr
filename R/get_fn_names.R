@@ -1,8 +1,10 @@
 #' Get function names from functions
 #'
 #' @param x a function.
-#' @param with_ns TRUE or FALSE. If TRUE (default), the function name(s) includes the namespace.
-#' @param strict TRUE or FALSE. If FALSE (default) and `x` is not a function, the function will return `NA`. It will throw an error otherwise.
+#' @param with_ns TRUE or FALSE. If TRUE (default), the function name(s)
+#'   includes the namespace.
+#' @param strict TRUE or FALSE. If FALSE (default) and `x` is not a function,
+#'   the function will return `NA`. It will throw an error otherwise.
 #'
 #' @return a string (`fn_name`) or a character vector (`fn_names`).
 #' @name function-names
@@ -10,10 +12,9 @@ NULL
 #'
 #' @rdname function-names
 #' @export
-fn_name <- function(fn, with_ns = TRUE, strict = FALSE){
-
-  if(!is.function(fn)){
-    if(strict){
+fn_name <- function(fn, with_ns = TRUE, strict = FALSE) {
+  if (!is.function(fn)) {
+    if (strict) {
       in_class <- class(x)
       msg <- sprintf('Input must be a function, not an object of class "%s"', in_class)
       stop(msg)
@@ -23,7 +24,7 @@ fn_name <- function(fn, with_ns = TRUE, strict = FALSE){
   }
 
   env <- environment(fn)
-  if(is.null(env)){
+  if (is.null(env)) {
     ns <- "base"
     env <- asNamespace(ns)
   } else {
@@ -39,19 +40,18 @@ fn_name <- function(fn, with_ns = TRUE, strict = FALSE){
   addr_match <- match(lobstr::obj_addr(fn), addrs)
   fn_name <- names(addrs)[addr_match]
 
-  if(ns == "R_GlobalEnv"){
+  if (ns == "R_GlobalEnv") {
     return(fn_name)
   }
 
-  if(with_ns){
+  if (with_ns) {
     is_export <- fn_name %in% getNamespaceExports(ns)
-    if(is_export){
+    if (is_export) {
       ns_op <- "::"
     } else {
       ns_op <- ":::"
     }
     deparse(call(ns_op, as.symbol(ns), as.symbol(fn_name)))
-
   } else {
     fn_name
   }
@@ -59,10 +59,10 @@ fn_name <- function(fn, with_ns = TRUE, strict = FALSE){
 #'
 #' @rdname function-names
 #' @export
-fn_names <- function(x, with_ns = TRUE, strict = FALSE){
-  if(is.function(x)){
+fn_names <- function(x, with_ns = TRUE, strict = FALSE) {
+  if (is.function(x)) {
     fn_name(x, with_ns = with_ns, strict = strict)
-  } else if (is.list(x)){
+  } else if (is.list(x)) {
     vapply(x, fn_name, character(1), with_ns = with_ns, strict = strict)
   } else {
     in_class <- class(x)
@@ -70,5 +70,3 @@ fn_names <- function(x, with_ns = TRUE, strict = FALSE){
     stop(msg)
   }
 }
-
-

@@ -1,7 +1,7 @@
 #' Convert Object(s) to Call(s)
 #'
-#' @description
-#' These functions take various R objects and return the equivalent named calls (e.g. `func(x, ...), pkg::func(x, ...), etc.`).
+#' @description These functions take various R objects and return the equivalent
+#' named calls (e.g. `func(x, ...), pkg::func(x, ...), etc.`).
 #' * [encall()] returns a named call.
 #' * [encalls()] returns a list of named calls.
 #'
@@ -31,9 +31,9 @@ NULL
 #'
 #' @rdname encall
 #' @export
-encall <- function(x){
+encall <- function(x) {
   x <- as_symbolic_obj(x)
-  if(is.symbol(x) || is_ns_sym(x)){
+  if (is.symbol(x) || is_ns_sym(x)) {
     return(as.call(list(x)))
   }
   x
@@ -45,10 +45,10 @@ encalls <- function(...,
                     .x = NULL,
                     .named = FALSE,
                     .name_all = FALSE,
-                    .names_type = NULL){
+                    .names_type = NULL) {
   x <- append(list(...), .x)
   out <- lapply(x, encall)
-  if(.named){
+  if (.named) {
     symbolic_auto_name(out, .name_all = .name_all, .names_type = .names_type)
   } else {
     out

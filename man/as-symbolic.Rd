@@ -29,15 +29,18 @@ symcs(
 )
 }
 \arguments{
-\item{x}{an R object. Precisely, a syntactic literal, a symbol, a call, a function, or a formula.}
+\item{x}{an R object. Precisely, a syntactic literal, a symbol, a call, a
+function, or a formula.}
 
 \item{...}{R objects as above.}
 
 \item{.x}{a list of R objects. It gets appended to \code{...}.}
 
-\item{.named}{TRUE or FALSE. If \code{TRUE} (default), the unnamed elements of the output of \code{as_symbolic_objs} are automatically named.}
+\item{.named}{TRUE or FALSE. If \code{TRUE} (default), the unnamed elements of the
+output of \code{as_symbolic_objs} are automatically named.}
 
-\item{.name_all}{TRUE or FALSE. If \code{TRUE} (default), all elements of the output of \code{as_symbolic_objs} are automatically named.}
+\item{.name_all}{TRUE or FALSE. If \code{TRUE} (default), all elements of the
+output of \code{as_symbolic_objs} are automatically named.}
 
 \item{.names_type}{one of \code{c("full", "sym", "head")}.
 \describe{
@@ -50,7 +53,9 @@ symcs(
 a symbolic object. That is, a symbol or a call.
 }
 \description{
-These functions take various R objects and return the equivalent symbols orcalls (e.g. \code{"func"} to \code{func}, \code{"pkg::func(x, ...)"} to \code{pkg::func(x, ...)}, etc.`).
+These functions take various R objects and return the equivalent
+symbols orcalls (e.g. \code{"func"} to \code{func}, \code{"pkg::func(x, ...)"} to
+\code{pkg::func(x, ...)}, etc.`).
 \itemize{
 \item \code{\link[=as_symbolic_obj]{as_symbolic_obj()}} returns a symbolic.
 \item \code{\link[=as_symbolic_objs]{as_symbolic_objs()}} returns a list of symbolics if length of input greater than one. A symbolic otherwise.

@@ -1,12 +1,12 @@
-caller_env <- function (n = 1){
+caller_env <- function(n = 1) {
   parent.frame(n = n + 1)
 }
 
-caller_arg <- function(arg){
+caller_arg <- function(arg) {
   symbolic_to_str(substitute(arg))
 }
 
-as_function <- function(x, env = global_env()){
+as_function <- function(x, env = global_env()) {
   if (is.function(x)) {
     return(x)
   }
@@ -14,8 +14,10 @@ as_function <- function(x, env = global_env()){
     if (length(x) > 2) {
       stop("`x` must be a left-sided formula.")
     }
-    args <- list(... = quote(expr = ),
-                 .x = quote(..1), .y = quote(..2), . = quote(..1))
+    args <- list(
+      ... = quote(expr = ),
+      .x = quote(..1), .y = quote(..2), . = quote(..1)
+    )
     fn <- as.function(c(args, as.list(x)[[2]]))
     return(fn)
   }
@@ -24,5 +26,3 @@ as_function <- function(x, env = global_env()){
   }
   stop("Canno convert input to a function")
 }
-
-

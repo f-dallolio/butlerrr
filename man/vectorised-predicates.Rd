@@ -19,7 +19,8 @@ not_any(.x, .p, ...)
 \arguments{
 \item{.x}{an R object (ideally a list or vector).}
 
-\item{.p}{a function call, a formula, or a string. It uses a simplified version of \code{\link[rlang:as_function]{rlang::as_function()}}.}
+\item{.p}{a function call, a formula, or a string. It uses a simplified
+version of \code{\link[rlang:as_function]{rlang::as_function()}}.}
 
 \item{...}{additional arguments.}
 }

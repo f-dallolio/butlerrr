@@ -15,7 +15,8 @@ str_format(
 \arguments{
 \item{x}{a character vector or a string.}
 
-\item{width}{integer. If NULL (default), it is automatically set equal to the max width among all elements of x.}
+\item{width}{integer. If NULL (default), it is automatically set equal to the
+max width among all elements of x.}
 
 \item{justify}{one of c("left", "right", "centre", "none").}
 
@@ -24,13 +25,14 @@ str_format(
 \item{...}{other arguments passed to base::format.}
 }
 \value{
-character representations of the elements of x in a common format. THat is, aappropriately padded.
+character representations of the elements of x in a common format.
+THat is, aappropriately padded.
 }
 \description{
 String formatiing/padding
 }
 \examples{
-x <- gsub("\\\\s","_",rownames(mtcars))
+x <- gsub("\\\\s", "_", rownames(mtcars))
 str_format(x) #' default: justify - "left
 str_format(x, justify = "right")
 str_format(x, justify = "centre")

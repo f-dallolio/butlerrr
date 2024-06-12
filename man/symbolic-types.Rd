@@ -16,7 +16,8 @@ symbolic_types(x, abbr = TRUE)
 \arguments{
 \item{x}{a symbol, a call, or a function.}
 
-\item{abbr}{TRUE or FALSE. If TRUE, the function returns abbreviated symbolic types.}
+\item{abbr}{TRUE or FALSE. If TRUE, the function returns abbreviated symbolic
+types.}
 }
 \value{
 a string indicating the "symbolic type" of a symbolic object.

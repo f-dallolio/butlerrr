@@ -10,13 +10,16 @@ encall(x)
 encalls(..., .x = NULL, .named = FALSE, .name_all = FALSE, .names_type = NULL)
 }
 \arguments{
-\item{x, .x}{an R object. Precisely, a syntactic literal, a symbol, a call, a function, or a formula.}
+\item{x, .x}{an R object. Precisely, a syntactic literal, a symbol, a call, a
+function, or a formula.}
 
 \item{...}{R objects as above.}
 
-\item{.named}{TRUE or FALSE. If \code{TRUE} (default), the unnamed elements of the output of \code{as_symbolic_objs} are automatically named.}
+\item{.named}{TRUE or FALSE. If \code{TRUE} (default), the unnamed elements of the
+output of \code{as_symbolic_objs} are automatically named.}
 
-\item{.name_all}{TRUE or FALSE. If \code{TRUE} (default), all elements of the output of \code{as_symbolic_objs} are automatically named.}
+\item{.name_all}{TRUE or FALSE. If \code{TRUE} (default), all elements of the
+output of \code{as_symbolic_objs} are automatically named.}
 
 \item{.names_type}{one of \code{c("full", "sym", "head")}.
 \describe{
@@ -29,7 +32,8 @@ encalls(..., .x = NULL, .named = FALSE, .name_all = FALSE, .names_type = NULL)
 A call (\code{encall}) or a list of calls (\code{encalls}).
 }
 \description{
-These functions take various R objects and return the equivalent named calls (e.g. \verb{func(x, ...), pkg::func(x, ...), etc.}).
+These functions take various R objects and return the equivalent
+named calls (e.g. \verb{func(x, ...), pkg::func(x, ...), etc.}).
 \itemize{
 \item \code{\link[=encall]{encall()}} returns a named call.
 \item \code{\link[=encalls]{encalls()}} returns a list of named calls.
