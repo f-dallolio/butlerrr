@@ -49,10 +49,10 @@
     <loc>https://f-dallolio.github.io/butlerrr/reference/rep-helpers.html</loc>
   </url>
   <url>
-    <loc>https://f-dallolio.github.io/butlerrr/reference/str_enum.html</loc>
+    <loc>https://f-dallolio.github.io/butlerrr/reference/str_format.html</loc>
   </url>
   <url>
-    <loc>https://f-dallolio.github.io/butlerrr/reference/str_format.html</loc>
+    <loc>https://f-dallolio.github.io/butlerrr/reference/str_line.html</loc>
   </url>
   <url>
     <loc>https://f-dallolio.github.io/butlerrr/reference/str_oxford.html</loc>
@@ -61,7 +61,13 @@
     <loc>https://f-dallolio.github.io/butlerrr/reference/str_pad_num.html</loc>
   </url>
   <url>
+    <loc>https://f-dallolio.github.io/butlerrr/reference/string-collapse.html</loc>
+  </url>
+  <url>
     <loc>https://f-dallolio.github.io/butlerrr/reference/string-embrace.html</loc>
+  </url>
+  <url>
+    <loc>https://f-dallolio.github.io/butlerrr/reference/string-itemize.html</loc>
   </url>
   <url>
     <loc>https://f-dallolio.github.io/butlerrr/reference/string-to-symbolic.html</loc>
