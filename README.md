@@ -67,7 +67,7 @@ symcs("mean", "mean()", mean)
 #> base::mean(x, ...)
 ```
 
-`symcs` (and `as_symbolic_objs`) also includes an argument called `.x`
+`symcs` (and `as_symbolic_objs`) also include an argument called `.x`
 for vector inputs that gets appended to the elements of `...` and
 arguments for naming. For example, `.named` that if `TRUE` automatically
 names the unnamed elements of the resulting list.

@@ -56,7 +56,7 @@ x <- list("sd", 1)
 symcs("mean", "mean()", mean)
 ```
 
-`symcs` (and `as_symbolic_objs`) also includes an argument called `.x` for vector inputs that gets appended to the elements of `...` and arguments for naming. For example, `.named` that if `TRUE` automatically names the unnamed elements of the resulting list.
+`symcs` (and `as_symbolic_objs`) also include an argument called `.x` for vector inputs that gets appended to the elements of `...` and arguments for naming. For example, `.named` that if `TRUE` automatically names the unnamed elements of the resulting list.
 
 ``` {r}
 symcs("mean", b = "mean()", mean, .x = x, .named = TRUE)
