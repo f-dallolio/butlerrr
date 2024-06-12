@@ -19,13 +19,124 @@ You can install the development version of butlerrr from
 devtools::install_github("f-dallolio/butlerrr")
 ```
 
-## Example
+## Why `Butlerrr`?
 
-This is a basic example which shows you how to solve a common problem:
+`Butlerrr` provides helper and convenience functions to help with the
+coding and manipulation of different kinds of R objects. Here some
+examples.
+
+### Symbolic objects and calls
+
+Some of the most important functions in `butlerrr` deal with symbolic
+objects and calls. Specifically, `symc` (alias for `as_symbolic_obj`)
+and `encall`, as well as their vectorized equivalents `symcs`
+(`as_symbolic_objs`) and `encalls`, convert arbitrary R objects in
+symbolic objects (symbols or calls) and calls.
+
+Some exaples for symbolic objects with `symc` (or `as_symbolic_obj`)…
 
 ``` r
 library(butlerrr)
-## basic example code
+symc("mean") # string representation of a symbol returns a symbol
+#> mean
+```
+
+``` r
+symc("mean()") # string representation of a call returns a call
+#> mean()
+```
+
+``` r
+symc(mean) # a function returns the call including the function namespace.
+#> base::mean(x, ...)
+```
+
+…and the vectorized version `symcs` (or `as_symbolic_objs`).
+
+``` r
+x <- list("sd", 1)
+symcs("mean", "mean()", mean)
+#> [[1]]
+#> mean
+#> 
+#> [[2]]
+#> mean()
+#> 
+#> [[3]]
+#> base::mean(x, ...)
+```
+
+`symcs` (and `as_symbolic_objs`) also includes an argument called `.x`
+for vector inputs that gets appended to the elements of `...` and
+arguments for naming. For example, `.named` that if `TRUE` automatically
+names the unnamed elements of the resulting list.
+
+``` r
+symcs("mean", b = "mean()", mean, .x = x, .named = TRUE)
+#> $mean
+#> mean
+#> 
+#> $b
+#> mean()
+#> 
+#> $`base::mean(x, ...)`
+#> base::mean(x, ...)
+#> 
+#> $sd
+#> sd
+#> 
+#> $`1`
+#> `1`
+```
+
+`encall` and `encalls` do the same but convert objects to “named” calls
+(e.g. in the form `func(args)`).
+
+``` r
+encall("mean")
+#> mean()
+```
+
+``` r
+encall("mean()")
+#> mean()
+```
+
+``` r
+encall(mean)
+#> base::mean(x, ...)
+```
+
+``` r
+
+x <- list("sd", 1)
+encalls("mean", "mean()", mean)
+#> [[1]]
+#> mean()
+#> 
+#> [[2]]
+#> mean()
+#> 
+#> [[3]]
+#> base::mean(x, ...)
+```
+
+``` r
+encalls("mean", b = "mean()", mean, .x = x, .named = TRUE)
+#> $`mean()`
+#> mean()
+#> 
+#> $b
+#> mean()
+#> 
+#> $`base::mean(x, ...)`
+#> base::mean(x, ...)
+#> 
+#> $`sd()`
+#> sd()
+#> 
+#> $``1`()`
+#> `1`()
 ```
 
 What is special about using `README.Rmd` instead of just `README.md`?

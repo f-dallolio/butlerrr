@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # butlerrr
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
 The goal of `butlerrr` is to provide helper and convenience (hence the name) functions for some recurring R coding operations.
@@ -29,14 +30,48 @@ You can install the development version of butlerrr from [GitHub](https://github
 devtools::install_github("f-dallolio/butlerrr")
 ```
 
-## Example
+## Why `Butlerrr`?
 
-This is a basic example which shows you how to solve a common problem:
+`Butlerrr` provides helper and convenience functions to help with the coding and manipulation of different kinds of R objects. Here some examples.
 
-```{r example}
+### Symbolic objects and calls
+
+Some of the most important functions in `butlerrr` deal with symbolic objects and calls. Specifically, `symc` (alias for `as_symbolic_obj`) and `encall`, as well as their vectorized equivalents `symcs` (`as_symbolic_objs`) and `encalls`, convert arbitrary R objects in symbolic objects (symbols or calls) and calls.
+
+Some exaples for symbolic objects with `symc` (or `as_symbolic_obj`)...
+
+```{r}
 library(butlerrr)
-## basic example code
+symc("mean") # string representation of a symbol returns a symbol
+symc("mean()") # string representation of a call returns a call
+symc(mean) # a function returns the call including the function namespace.
 ```
+
+...and the vectorized version `symcs` (or `as_symbolic_objs`).
+
+```{r}
+x <- list("sd", 1)
+symcs("mean", "mean()", mean)
+```
+
+`symcs` (and `as_symbolic_objs`) also includes an argument called `.x` for vector inputs that gets appended to the elements of `...` and arguments for naming. For example, `.named` that if `TRUE` automatically names the unnamed elements of the resulting list.
+
+``` {r}
+symcs("mean", b = "mean()", mean, .x = x, .named = TRUE)
+```
+
+`encall` and `encalls` do the same but convert objects to "named" calls (e.g. in the form `func(args)`).
+
+```{r}
+encall("mean")
+encall("mean()")
+encall(mean)
+
+x <- list("sd", 1)
+encalls("mean", "mean()", mean)
+encalls("mean", b = "mean()", mean, .x = x, .named = TRUE)
+```
+
 
 What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
 
