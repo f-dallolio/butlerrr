@@ -19,7 +19,7 @@ You can install the development version of butlerrr from
 devtools::install_github("f-dallolio/butlerrr")
 ```
 
-## Why `Butlerrr`?
+## Why `butlerrr`?
 
 `Butlerrr` provides helper and convenience functions to help with the
 coding and manipulation of different kinds of R objects.
