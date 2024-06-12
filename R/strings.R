@@ -69,14 +69,16 @@ str_format <- function(x,
 #' Enumerate and format the elements of a character vector.
 #'
 #' @param x a character vector.
-#' @param sep a string indicating the separation betweem item numbers and
-#'   strings.
+#' @param sep a string. For [str_enum] it indicates the separator betweem item numbers and
+#'   strings. For, [str_itemize], it represents the item indicator.
 #' @param pad_num TRUE or FALSE. If TRUE (default), numbers are padded with
 #'   str_pad_num.
 #' @param format_str TRUE or FALSE. If TRUE (default), strings are formatted
 #'   with str_format.
 #'
 #' @return a character vector.
+#' @name string-itemize
+NULL
 #' @examples
 #' x <- gsub("\\s", "_", rownames(mtcars))[1:12]
 #' str_enum(x)
@@ -86,6 +88,16 @@ str_format <- function(x,
 #' str_enum(x, pad_num = FALSE)
 #' # strings not of same width if `format_str` is FALSE
 #' str_enum(x, format_str = FALSE)
+#'
+#' item1 <- str_itemize(x)
+#' # identical to...
+#' item2 <- str_itemize(x, type = "list", item = "-", format_str = TRUE)
+#' item1
+#' item2
+#'
+#' # str_itemize is perfect for `cat`:
+#' cat(item1, sep = "\n")
+#' @rdname string-itemize
 #' @export
 str_enum <- function(x, sep = ": ", pad_num = TRUE, format_str = TRUE) {
   enum <- seq_along(x)
@@ -93,8 +105,134 @@ str_enum <- function(x, sep = ": ", pad_num = TRUE, format_str = TRUE) {
   if (format_str) x <- str_format(x)
   paste0(enum, sep, x)
 }
+#' @rdname string-itemize
+#' @export
+str_itemize <- function(x, type = c("list", "enum", "letters", "up_letters"),
+                        sep = "-", format_str = TRUE, ...){
+  sep <- gsub("^\\s*|\\s*$", "", sep)
+
+  type <- match.arg(type)
+  if(type == "enum"){
+    return(str_enum(x, format_str = format_str, sep = sep))
+  }
+
+  if(format_str) {
+    x <- str_format(x)
+  }
+
+  if(type %in% c("letters", "up_letters")){
+    n <- length(x)
+    n2 <- length(letters)
+    n_times <- ceiling(n/n2)
+    nn <- rep_each(seq_len(n_times), n2)
+
+    if(type == "letters") pre <- letters else pre <- LETTERS
+    pre <- strrep(pre, nn)[1:n]
+
+    if(format_str) {
+      pre <- str_format(pre, justify = "right")
+    }
+
+    return(paste(pre, sep, x))
+  }
+
+  paste(sep, x)
+}
+
+#' Collapse Strings
+#'
+#' @inheritParams str_embrace
+#' @param x a character vector.
+#' @param collapse defaults to `.c`.
+#' @param recycle0 	logical indicating if zero-length character arguments should
+#'   result in the zero-length `character(0)`. When `collapse` is a
+#'   string, `recycle0` does not recycle to zero-length, but to `""`.
+#' @param .trailing TRUE or FALSE. If TRUE (default), there is no return (`"\n"`) at the end of the output. If FALSE, a return (`"\n"`) is pasted at the end of the output.
+#'
+#' @return a string.
+#' @examples
+#' str_collapse(letters)
+#' str_collapse(letters, .c = str_oxford)
+#' @name string-collapse
+NULL
+#' @export
+#' @name string-collapse
+str_collapse <- function(x, .c = "", ..., collapse = .c, recycle0 = FALSE){
+  if(is.character(collapse) && length(collapse) == 1){
+    paste(x, collapse = collapse, recycle0 = recycle0)
+  } else {
+    fn <- as_function(collapse)
+    fn(x, ...)
+  }
+}
+#' @export
+#' @name string-collapse
+str_coll <- str_collapse
+#' @export
+#' @name string-collapse
+str_p0 <- function(x, .c = "", ..., collapse = .c, recycle0 = FALSE){
+  str_collapse(x, .c = .c, ..., collapse = collapse, recycle0 = recycle0)
+}
+#' @export
+#' @name string-collapse
+str_p <- function(x, .c = " ", ..., collapse = .c, recycle0 = FALSE){
+  str_collapse(x, .c = .c, ..., collapse = collapse, recycle0 = recycle0)
+}
 
 
+#' String Lines
+#'
+#' @param x a character vector.
+#' @param .f a function or a formula.
+#' @param ... extra arguments for `.f`.
+#' @param .trailing TRUE or FALSE (default).
+#'
+#' @return a string.
+#' @export
+#'
+#' @examples
+#' out1 <- str_line(letters[1:4])
+#' out2 <- str_line(letters[1:4], str_parens)
+#' out3 <- str_line(letters[1:4], str_parens, .trailing = TRUE)
+#' cat(out1, "else")
+#' cat(out2, "else")
+#' cat(out3, "else")
+str_line <- function(..., .f = NULL, .args = NULL, .trailing = FALSE){
+  x <- c(...)
+  stopifnot(is.character(x))
+  if(!is.null(.f)){
+    if(is.character(.f) && length(.f) == 1){
+      x <- paste0(x, collapse = .f)
+    } else {
+      fn <- as_function(.f)
+      x <- do.call(fn, append(list(x), .args))
+    }
+  }
+  if (.trailing) {
+    paste0(x, "\n", collapse = "")
+  } else {
+    paste(x, collapse = "\n")
+  }
+}
+
+cat_line0 <- function(..., .f = NULL, .pre = NULL, .post = NULL,
+                      .f_args = NULL, .pre_sep = "", .post_sep = .pre_sep){
+  x <- c(...)
+  if(!is.null(.f)){
+    fn <- as_function(.f)
+    x <- do.call(fn, append(list(x), .f_args))
+  }
+  n <- length(x)
+  if(!is.null(.pre)){
+    stopifnot(length(.pre) %in% c(1, n))
+    x <- paste(.pre, x, sep = .pre_sep)
+  }
+  if(!is.null(.post)){
+    stopifnot(length(.post) %in% c(1, n))
+    x <- paste(x, .post, sep = .post_sep)
+  }
+  cat(x, sep = "\n")
+}
 
 #' Embrace Strings
 #'
