@@ -70,7 +70,6 @@ symcs("mean", b = "mean()", mean, .x = x, .named = TRUE)
 encall("mean")
 encall("mean()")
 encall(mean)
-
 x <- list("sd", 1)
 encalls("mean", "mean()", mean)
 encalls("mean", b = "mean()", mean, .x = x, .named = TRUE)

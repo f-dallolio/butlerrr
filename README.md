@@ -111,7 +111,6 @@ encall(mean)
 ```
 
 ``` r
-
 x <- list("sd", 1)
 encalls("mean", "mean()", mean)
 #> [[1]]
