@@ -202,7 +202,7 @@ str_p <- function(x, .c = " ", ..., collapse = .c, recycle0 = FALSE){
 NULL
 #' @rdname string-line
 #' @export
-str_line <- function(..., .f = NULL, .args = NULL, .trailing = FALSE){
+str_return <- function(..., .f = NULL, .args = NULL, .trailing = FALSE){
   x <- as.character(c(...))
   stopifnot(is.character(x))
   if(!is.null(.f)){
@@ -221,7 +221,10 @@ str_line <- function(..., .f = NULL, .args = NULL, .trailing = FALSE){
 }
 #' @rdname string-line
 #' @export
-cat_line0 <- function(..., .f = NULL, .args = NULL){
+str_ret <- str_return
+#' @rdname string-line
+#' @export
+cat_return <- function(..., .f = NULL, .args = NULL){
   x <- c(...)
   if(!is.null(.f)){
     fn <- as_function(.f)
@@ -229,6 +232,9 @@ cat_line0 <- function(..., .f = NULL, .args = NULL){
   }
   cat(x, sep = "\n")
 }
+#' @rdname string-line
+#' @export
+cat_ret <- cat_return
 
 #' Embrace Strings
 #'

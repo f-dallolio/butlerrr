@@ -2,13 +2,19 @@
 % Please edit documentation in R/strings.R
 \name{string-line}
 \alias{string-line}
-\alias{str_line}
-\alias{cat_line0}
+\alias{str_return}
+\alias{str_ret}
+\alias{cat_return}
+\alias{cat_ret}
 \title{String Lines}
 \usage{
-str_line(..., .f = NULL, .args = NULL, .trailing = FALSE)
+str_return(..., .f = NULL, .args = NULL, .trailing = FALSE)
 
-cat_line0(..., .f = NULL, .args = NULL)
+str_ret(..., .f = NULL, .args = NULL, .trailing = FALSE)
+
+cat_return(..., .f = NULL, .args = NULL)
+
+cat_ret(..., .f = NULL, .args = NULL)
 }
 \arguments{
 \item{...}{strings or R objects coercible to strings.}
