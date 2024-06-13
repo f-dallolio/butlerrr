@@ -182,23 +182,28 @@ str_p <- function(x, .c = " ", ..., collapse = .c, recycle0 = FALSE){
 
 #' String Lines
 #'
-#' @param x a character vector.
-#' @param .f a function or a formula.
-#' @param ... extra arguments for `.f`.
-#' @param .trailing TRUE or FALSE (default).
+#' @param ... strings or R objects coercible to strings.
+#' @param .f a function or a formula. It uses a simplified version of [rlang::as_function].
+#' @param .args list with extra arguments for `.f`.
+#' @param .trailing TRUE or FALSE. If TRUE (default), a return (`"\n"`) is pasted at the end of the output string.
 #'
-#' @return a string.
-#' @export
-#'
+#' @return a string made of input strings separated by returns (`"\n"`).
 #' @examples
 #' out1 <- str_line(letters[1:4])
-#' out2 <- str_line(letters[1:4], str_parens)
-#' out3 <- str_line(letters[1:4], str_parens, .trailing = TRUE)
-#' cat(out1, "else")
-#' cat(out2, "else")
-#' cat(out3, "else")
+#' out1
+#' out2 <- str_line(letters[1:4], .f = str_parens, .args = list(type = "angle"))
+#' out2
+#' out3 <- str_line(letters[1:4], .f = str_parens, .trailing = TRUE)
+#' out3
+#' cat_line0(out1, "else")
+#' cat_line0(out2, "else")
+#' cat_line0(out3, "else")
+#' @name string-line
+NULL
+#' @rdname string-line
+#' @export
 str_line <- function(..., .f = NULL, .args = NULL, .trailing = FALSE){
-  x <- c(...)
+  x <- as.character(c(...))
   stopifnot(is.character(x))
   if(!is.null(.f)){
     if(is.character(.f) && length(.f) == 1){
@@ -214,22 +219,13 @@ str_line <- function(..., .f = NULL, .args = NULL, .trailing = FALSE){
     paste(x, collapse = "\n")
   }
 }
-
-cat_line0 <- function(..., .f = NULL, .pre = NULL, .post = NULL,
-                      .f_args = NULL, .pre_sep = "", .post_sep = .pre_sep){
+#' @rdname string-line
+#' @export
+cat_line0 <- function(..., .f = NULL, .args = NULL){
   x <- c(...)
   if(!is.null(.f)){
     fn <- as_function(.f)
-    x <- do.call(fn, append(list(x), .f_args))
-  }
-  n <- length(x)
-  if(!is.null(.pre)){
-    stopifnot(length(.pre) %in% c(1, n))
-    x <- paste(.pre, x, sep = .pre_sep)
-  }
-  if(!is.null(.post)){
-    stopifnot(length(.post) %in% c(1, n))
-    x <- paste(x, .post, sep = .post_sep)
+    x <- do.call(fn, append(list(x), .args))
   }
   cat(x, sep = "\n")
 }
