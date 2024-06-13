@@ -48,9 +48,13 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">str_line</span><span class="op">(</span><span class="va">...</span>, .f <span class="op">=</span> <span class="cn">NULL</span>, .args <span class="op">=</span> <span class="cn">NULL</span>, .trailing <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">str_return</span><span class="op">(</span><span class="va">...</span>, .f <span class="op">=</span> <span class="cn">NULL</span>, .args <span class="op">=</span> <span class="cn">NULL</span>, .trailing <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">cat_line0</span><span class="op">(</span><span class="va">...</span>, .f <span class="op">=</span> <span class="cn">NULL</span>, .args <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">str_ret</span><span class="op">(</span><span class="va">...</span>, .f <span class="op">=</span> <span class="cn">NULL</span>, .args <span class="op">=</span> <span class="cn">NULL</span>, .trailing <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">cat_return</span><span class="op">(</span><span class="va">...</span>, .f <span class="op">=</span> <span class="cn">NULL</span>, .args <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">cat_ret</span><span class="op">(</span><span class="va">...</span>, .f <span class="op">=</span> <span class="cn">NULL</span>, .args <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -81,33 +85,23 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">out1</span> <span class="op">&lt;-</span> <span class="fu">str_line</span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in str_line(letters[1:4]):</span> could not find function "str_line"</span>
 <span class="r-in"><span><span class="va">out1</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "a\nb\nc\nd"</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'out1' not found</span>
 <span class="r-in"><span><span class="va">out2</span> <span class="op">&lt;-</span> <span class="fu">str_line</span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, .f <span class="op">=</span> <span class="va">str_parens</span>, .args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"angle"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in str_line(letters[1:4], .f = str_parens, .args = list(type = "angle")):</span> could not find function "str_line"</span>
 <span class="r-in"><span><span class="va">out2</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "&lt;a&gt;\n&lt;b&gt;\n&lt;c&gt;\n&lt;d&gt;"</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'out2' not found</span>
 <span class="r-in"><span><span class="va">out3</span> <span class="op">&lt;-</span> <span class="fu">str_line</span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">]</span>, .f <span class="op">=</span> <span class="va">str_parens</span>, .trailing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in str_line(letters[1:4], .f = str_parens, .trailing = TRUE):</span> could not find function "str_line"</span>
 <span class="r-in"><span><span class="va">out3</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "(a)\n(b)\n(c)\n(d)\n"</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'out3' not found</span>
 <span class="r-in"><span><span class="fu">cat_line0</span><span class="op">(</span><span class="va">out1</span>, <span class="st">"else"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> a</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> b</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> c</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> d</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> else</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in cat_line0(out1, "else"):</span> could not find function "cat_line0"</span>
 <span class="r-in"><span><span class="fu">cat_line0</span><span class="op">(</span><span class="va">out2</span>, <span class="st">"else"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;a&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;b&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;c&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;d&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> else</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in cat_line0(out2, "else"):</span> could not find function "cat_line0"</span>
 <span class="r-in"><span><span class="fu">cat_line0</span><span class="op">(</span><span class="va">out3</span>, <span class="st">"else"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (a)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (b)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (c)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (d)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> else</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in cat_line0(out3, "else"):</span> could not find function "cat_line0"</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
