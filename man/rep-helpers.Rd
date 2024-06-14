@@ -24,6 +24,8 @@ vector if of length 1. Negative or NA values are an error. A double vector
 is accepted, other inputs being coerced to an integer or double vector.}
 
 \item{len}{non-negative numeric coercible to integer.}
+
+\item{along}{a vector that determines the number times \code{x} is repeated.}
 }
 \value{
 a vector.
