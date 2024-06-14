@@ -50,7 +50,9 @@
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">rep_times</span><span class="op">(</span><span class="va">x</span>, <span class="va">times</span>, len <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">rep_each</span><span class="op">(</span><span class="va">x</span>, <span class="va">times</span>, len <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">rep_each</span><span class="op">(</span><span class="va">x</span>, <span class="va">times</span>, len <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">rep_along</span><span class="op">(</span><span class="va">x</span>, <span class="va">along</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -70,6 +72,10 @@ is accepted, other inputs being coerced to an integer or double vector.</p></dd>
 
 <dt>len</dt>
 <dd><p>non-negative numeric coercible to integer.</p></dd>
+
+
+<dt>along</dt>
+<dd><p>a vector that determines the number times <code>x</code> is repeated.</p></dd>
 
 </dl></div>
     <div class="section level2">
