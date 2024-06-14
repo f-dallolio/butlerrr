@@ -19,6 +19,9 @@
     <loc>https://f-dallolio.github.io/butlerrr/reference/as-symbolic.html</loc>
   </url>
   <url>
+    <loc>https://f-dallolio.github.io/butlerrr/reference/dots-lang.html</loc>
+  </url>
+  <url>
     <loc>https://f-dallolio.github.io/butlerrr/reference/encall.html</loc>
   </url>
   <url>
@@ -43,7 +46,16 @@
     <loc>https://f-dallolio.github.io/butlerrr/reference/is_numeric_chr.html</loc>
   </url>
   <url>
+    <loc>https://f-dallolio.github.io/butlerrr/reference/is_string.html</loc>
+  </url>
+  <url>
+    <loc>https://f-dallolio.github.io/butlerrr/reference/is_syntactic_literal.html</loc>
+  </url>
+  <url>
     <loc>https://f-dallolio.github.io/butlerrr/reference/namespaced-language.html</loc>
+  </url>
+  <url>
+    <loc>https://f-dallolio.github.io/butlerrr/reference/new-dots.html</loc>
   </url>
   <url>
     <loc>https://f-dallolio.github.io/butlerrr/reference/rep-helpers.html</loc>

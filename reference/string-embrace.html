@@ -93,49 +93,40 @@ parentheses.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "Hornet_4_Drive"    "Hornet_Sportabout" "Valiant"          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "Duster_360"        "Merc_240D"         "Merc_230"         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [10] "Merc_280"          "Merc_280C"         "Merc_450SE"       </span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">str_embrace</span><span class="op">(</span><span class="va">x</span>, left <span class="op">=</span> <span class="st">"-"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "-Mazda_RX4-"         "-Mazda_RX4_Wag-"     "-Datsun_710-"       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "-Hornet_4_Drive-"    "-Hornet_Sportabout-" "-Valiant-"          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "-Duster_360-"        "-Merc_240D-"         "-Merc_230-"         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [10] "-Merc_280-"          "-Merc_280C-"         "-Merc_450SE-"       </span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">str_embrace</span><span class="op">(</span><span class="va">x</span>, left <span class="op">=</span> <span class="st">"-"</span>, right <span class="op">=</span> <span class="st">"--"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "-Mazda_RX4--"         "-Mazda_RX4_Wag--"     "-Datsun_710--"       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "-Hornet_4_Drive--"    "-Hornet_Sportabout--" "-Valiant--"          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "-Duster_360--"        "-Merc_240D--"         "-Merc_230--"         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [10] "-Merc_280--"          "-Merc_280C--"         "-Merc_450SE--"       </span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">str_embrace</span><span class="op">(</span><span class="va">x</span>, left <span class="op">=</span> <span class="st">"-"</span>, .c <span class="op">=</span> <span class="va">str_oxford</span><span class="op">)</span></span></span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in loadNamespace(x):</span> there is no package called ‘stringr’</span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">str_parens</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "(Mazda_RX4)"         "(Mazda_RX4_Wag)"     "(Datsun_710)"       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "(Hornet_4_Drive)"    "(Hornet_Sportabout)" "(Valiant)"          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "(Duster_360)"        "(Merc_240D)"         "(Merc_230)"         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [10] "(Merc_280)"          "(Merc_280C)"         "(Merc_450SE)"       </span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">str_parens</span><span class="op">(</span><span class="va">x</span>, <span class="st">"round"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "(Mazda_RX4)"         "(Mazda_RX4_Wag)"     "(Datsun_710)"       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "(Hornet_4_Drive)"    "(Hornet_Sportabout)" "(Valiant)"          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "(Duster_360)"        "(Merc_240D)"         "(Merc_230)"         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [10] "(Merc_280)"          "(Merc_280C)"         "(Merc_450SE)"       </span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">str_parens</span><span class="op">(</span><span class="va">x</span>, <span class="st">"round"</span>, .c <span class="op">=</span> <span class="va">str_oxford</span><span class="op">)</span></span></span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in loadNamespace(x):</span> there is no package called ‘stringr’</span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">str_parens</span><span class="op">(</span><span class="va">x</span>, <span class="st">"squared"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "[Mazda_RX4]"         "[Mazda_RX4_Wag]"     "[Datsun_710]"       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "[Hornet_4_Drive]"    "[Hornet_Sportabout]" "[Valiant]"          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "[Duster_360]"        "[Merc_240D]"         "[Merc_230]"         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [10] "[Merc_280]"          "[Merc_280C]"         "[Merc_450SE]"       </span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">str_parens</span><span class="op">(</span><span class="va">x</span>, <span class="st">"curly"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "{Mazda_RX4}"         "{Mazda_RX4_Wag}"     "{Datsun_710}"       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "{Hornet_4_Drive}"    "{Hornet_Sportabout}" "{Valiant}"          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "{Duster_360}"        "{Merc_240D}"         "{Merc_230}"         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [10] "{Merc_280}"          "{Merc_280C}"         "{Merc_450SE}"       </span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">str_parens</span><span class="op">(</span><span class="va">x</span>, <span class="st">"angle"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "&lt;Mazda_RX4&gt;"         "&lt;Mazda_RX4_Wag&gt;"     "&lt;Datsun_710&gt;"       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "&lt;Hornet_4_Drive&gt;"    "&lt;Hornet_Sportabout&gt;" "&lt;Valiant&gt;"          </span>
