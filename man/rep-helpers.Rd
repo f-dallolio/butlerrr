@@ -4,11 +4,14 @@
 \alias{rep-helpers}
 \alias{rep_times}
 \alias{rep_each}
+\alias{rep_along}
 \title{Extensions of \link[base:rep]{base::rep}}
 \usage{
 rep_times(x, times, len = NULL)
 
 rep_each(x, times, len = NULL)
+
+rep_along(x, along)
 }
 \arguments{
 \item{x}{a vector (of any mode including a list) or a factor or (for rep

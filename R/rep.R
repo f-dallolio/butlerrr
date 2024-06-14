@@ -37,3 +37,8 @@ rep_each <- function(x, times, len = NULL) {
   }
   rep_times(out, times = 1, len = len)
 }
+#' @rdname rep-helpers
+#' @export
+rep_along <- function(x, along) {
+  rep_len(x, length(along))
+}
