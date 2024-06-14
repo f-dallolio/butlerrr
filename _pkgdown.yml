@@ -2,7 +2,11 @@ url: https://f-dallolio.github.io/butlerrr/
 template:
   bootstrap: 5
 reference:
-- title: Symbolic Objects
+- title: Dots `(...)`
+  contents:
+  - "new-dots"
+  - "dots-lang"
+- title: Symbolic Objects (i.e. symbols and calls)
   contents:
   - starts_with("symbolic")
   - starts_with("as_symbolic")

@@ -54,12 +54,13 @@ as_symbolic_obj <- function(x, with_ns = TRUE) {
   if (is.function(x)) {
     x <- fn_call(x, with_ns = with_ns)
   }
-  if (rlang::is_string(x)) {
-    return(str_to_symbolic(x))
+
+  if (rlang::is_syntactic_literal(x) || is.complex(x)) {
+    x <- as.character(x)
   }
 
-  if (rlang::is_syntactic_literal(x)) {
-    return(as.symbol(x))
+  if (rlang::is_string(x)) {
+    return(str_to_symbolic(x))
   }
 
   if (rlang::is_symbolic(x)) {

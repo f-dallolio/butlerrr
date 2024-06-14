@@ -33,22 +33,13 @@ Embrace Strings
 \examples{
 x <- gsub("\\\\s", "_", rownames(mtcars))[1:12]
 x
-
 str_embrace(x, left = "-")
-
 str_embrace(x, left = "-", right = "--")
-
 str_embrace(x, left = "-", .c = str_oxford)
-
 str_parens(x)
-
 str_parens(x, "round")
-
 str_parens(x, "round", .c = str_oxford)
-
 str_parens(x, "squared")
-
 str_parens(x, "curly")
-
 str_parens(x, "angle")
 }

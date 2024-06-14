@@ -3,33 +3,35 @@
 \name{string-line}
 \alias{string-line}
 \alias{str_return}
-\alias{str_ret}
+\alias{str_r}
 \alias{cat_return}
-\alias{cat_ret}
-\title{String Lines}
+\alias{rcat}
+\title{Concatenate strings with \code{"\\n"}.}
 \usage{
 str_return(..., .f = NULL, .args = NULL, .trailing = FALSE)
 
-str_ret(..., .f = NULL, .args = NULL, .trailing = FALSE)
+str_r(..., .f = NULL, .args = NULL, .trailing = FALSE)
 
 cat_return(..., .f = NULL, .args = NULL)
 
-cat_ret(..., .f = NULL, .args = NULL)
+rcat(..., .f = NULL, .args = NULL)
 }
 \arguments{
 \item{...}{strings or R objects coercible to strings.}
 
-\item{.f}{a function or a formula. It uses a simplified version of \link[rlang:as_function]{rlang::as_function}.}
+\item{.f}{a function or a formula. It uses a simplified version of
+\link[rlang:as_function]{rlang::as_function}.}
 
 \item{.args}{list with extra arguments for \code{.f}.}
 
-\item{.trailing}{TRUE or FALSE. If TRUE (default), a return (\code{"\\n"}) is pasted at the end of the output string.}
+\item{.trailing}{TRUE or FALSE. If TRUE (default), a return (\code{"\\n"}) is
+pasted at the end of the output string.}
 }
 \value{
 a string made of input strings separated by returns (\code{"\\n"}).
 }
 \description{
-String Lines
+Concatenate strings with \code{"\\n"}.
 }
 \examples{
 out1 <- str_line(letters[1:4])

@@ -28,10 +28,12 @@ applied to each element of the input.}
 \item{collapse}{defaults to \code{.c}.}
 
 \item{recycle0}{logical indicating if zero-length character arguments should
-result in the zero-length \code{character(0)}. When \code{collapse} is a
-string, \code{recycle0} does not recycle to zero-length, but to \code{""}.}
+result in the zero-length \code{character(0)}. When \code{collapse} is a string,
+\code{recycle0} does not recycle to zero-length, but to \code{""}.}
 
-\item{.trailing}{TRUE or FALSE. If TRUE (default), there is no return (\code{"\\n"}) at the end of the output. If FALSE, a return (\code{"\\n"}) is pasted at the end of the output.}
+\item{.trailing}{TRUE or FALSE. If TRUE (default), there is no return
+(\code{"\\n"}) at the end of the output. If FALSE, a return (\code{"\\n"}) is pasted at
+the end of the output.}
 }
 \value{
 a string.

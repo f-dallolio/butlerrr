@@ -3,12 +3,18 @@
 \name{string-to-symbolic}
 \alias{string-to-symbolic}
 \alias{str_to_symbolic}
+\alias{str2symc}
 \alias{chr_to_symbolic}
+\alias{chr2symc}
 \title{Convert Strings to Symbolic Objects (generalizes \link[base:parse]{base::str2lang})}
 \usage{
 str_to_symbolic(x, strict = FALSE)
 
+str2symc(x, strict = FALSE)
+
 chr_to_symbolic(x, strict = FALSE)
+
+chr2symc(x, strict = FALSE)
 }
 \arguments{
 \item{x}{a string or a character vector.}

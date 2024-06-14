@@ -28,6 +28,15 @@ is_integer_chr <- function(x, na.omit = TRUE) {
   }
 }
 
+#' Is object a single string
+#'
+#' @param x an R object.
+#'
+#' @return TRUE if `x` is a character of length 1 (i.e. a string) or FALSE.
+#' @export
+is_string <- function(x){
+  is.character(x) && length(x) == 1
+}
 
 #' Does a language object include namespace?
 #'
@@ -146,4 +155,98 @@ is_symbolic2 <- function(x, all = TRUE) {
   } else {
     vapply(x, is_symbolic, logical(1))
   }
+}
+
+#' Is an object a syntactic literal?
+#'
+#' @param x an arbitrary R object.
+#'
+#' @return TRUE or FALSE or a vector of logicals.
+#' @export
+is_syntactic_literal <- function(x) {
+  switch(typeof(x),
+         NULL = TRUE,
+         logical = function(x) length(x) == 1,
+         integer = function(x) length(x) == 1,
+         double = function(x) length(x) == 1,
+         character = function(x) length(x) == 1,
+         complex = function(x) {
+           if (length(x) != 1) return(FALSE)
+           is_na(x) || Re(x) == 0},
+         FALSE
+  )
+}
+
+
+
+fns_list <- function(..., .predicate = NULL, .strict = FALSE){
+  x <- list(...)
+  are_fns <- function(x) inherits(x, "formula") || is.function(x) || is_string(x)
+  no_fn_id <- vapply(x, Negate(are_fns), logical(1))
+  if(any(no_fn_id)){
+    pos <- which(no_fn_id)
+    cls <- vapply(x[pos], class, character(1))
+    cls_split <- split(pos, cls)
+    cls_vec <- str_as_vector(cls_split)
+    cls_nms <- paste0(names(cls_vec), ":")
+    cls_plural <- rep("", length(cls_split))
+    cls_plural[lengths(cls_split) > 1] <- "s"
+    msg1 <- sprintf("All elements must be either a function, a formula, or a string, Not")
+    msg2 <- sprintf("- %s  element%s %s", format(cls_nms), cls_plural, cls_vec)
+    msg <- paste(c(msg1, msg2), collapse = "\n")
+    if(.strict){
+      stop(msg)
+    } else {
+      warning(msg)
+    }
+  }
+  out <- lapply(x, as_function)
+  if(is.null(.predicate)){
+    .predicate = match.arg(.predicate, c("and", "or"))
+  }
+  structure(out,.p = .predicate, class = c("fns_list"))
+}
+
+and_p <- function(..., .strict = FALSE){
+  args <- c(list(...), list(.predicate = "and", .strict = .strict))
+  do.call(fns_list, args)
+}
+or_p <- function(..., .strict = FALSE){
+  args <- c(list(...), list(.predicate = "or", .strict = .strict))
+  do.call(fns_list, args)
+}
+
+obj_is <- function(x, .p, ...){
+  if(inherits(.p, "fns_list")){
+    out <- vapply(.p, \(f) f(x), logical(1))
+    and_or <- attr(.p, ".p")
+    if((and_or) == "and") return(all(out))
+    return(any(out))
+  }
+  if(inherits(x, "formula") || is.function(x) || is_string(x)){
+    out <- .p(x, ...)
+    if(is.logical(out)){
+      stopifnot(".p must return a single TRUE or FALSE." = length(out) == 1)
+      return(out)
+    } else {
+      stop(".p must be a function, a formula, a string,
+           or a list of functions of class `fns_list`")
+    }
+  }
+}
+
+objs_are <- function(..., .p, .args = NULL){
+  x <- list(...)
+  sapply(list(...), \(x) do.call(obj_is, append(list(x = x, .p = .p), .args)))
+}
+objs_every <- function(..., .p, .args = NULL){
+  out <- objs_are(..., .p = .p, .args = .args)
+  all(out)
+}
+objs_some <- function(..., .p, .args = NULL){
+  out <- objs_are(..., .p = .p, .args = .args)
+  any(out)
+}
+objs_none <- function(..., .p, .args = NULL){
+  !objs_some(..., .p = .p, .args = .args)
 }

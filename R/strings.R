@@ -108,28 +108,28 @@ str_enum <- function(x, sep = ": ", pad_num = TRUE, format_str = TRUE) {
 #' @rdname string-itemize
 #' @export
 str_itemize <- function(x, type = c("list", "enum", "letters", "up_letters"),
-                        sep = "-", format_str = TRUE, ...){
+                        sep = "-", format_str = TRUE, ...) {
   sep <- gsub("^\\s*|\\s*$", "", sep)
 
   type <- match.arg(type)
-  if(type == "enum"){
+  if (type == "enum") {
     return(str_enum(x, format_str = format_str, sep = sep))
   }
 
-  if(format_str) {
+  if (format_str) {
     x <- str_format(x)
   }
 
-  if(type %in% c("letters", "up_letters")){
+  if (type %in% c("letters", "up_letters")) {
     n <- length(x)
     n2 <- length(letters)
-    n_times <- ceiling(n/n2)
+    n_times <- ceiling(n / n2)
     nn <- rep_each(seq_len(n_times), n2)
 
-    if(type == "letters") pre <- letters else pre <- LETTERS
+    if (type == "letters") pre <- letters else pre <- LETTERS
     pre <- strrep(pre, nn)[1:n]
 
-    if(format_str) {
+    if (format_str) {
       pre <- str_format(pre, justify = "right")
     }
 
@@ -145,9 +145,11 @@ str_itemize <- function(x, type = c("list", "enum", "letters", "up_letters"),
 #' @param x a character vector.
 #' @param collapse defaults to `.c`.
 #' @param recycle0 	logical indicating if zero-length character arguments should
-#'   result in the zero-length `character(0)`. When `collapse` is a
-#'   string, `recycle0` does not recycle to zero-length, but to `""`.
-#' @param .trailing TRUE or FALSE. If TRUE (default), there is no return (`"\n"`) at the end of the output. If FALSE, a return (`"\n"`) is pasted at the end of the output.
+#'   result in the zero-length `character(0)`. When `collapse` is a string,
+#'   `recycle0` does not recycle to zero-length, but to `""`.
+#' @param .trailing TRUE or FALSE. If TRUE (default), there is no return
+#'   (`"\n"`) at the end of the output. If FALSE, a return (`"\n"`) is pasted at
+#'   the end of the output.
 #'
 #' @return a string.
 #' @examples
@@ -157,8 +159,8 @@ str_itemize <- function(x, type = c("list", "enum", "letters", "up_letters"),
 NULL
 #' @export
 #' @name string-collapse
-str_collapse <- function(x, .c = "", ..., collapse = .c, recycle0 = FALSE){
-  if(is.character(collapse) && length(collapse) == 1){
+str_collapse <- function(x, .c = "", ..., collapse = .c, recycle0 = FALSE) {
+  if (is.character(collapse) && length(collapse) == 1) {
     paste(x, collapse = collapse, recycle0 = recycle0)
   } else {
     fn <- as_function(collapse)
@@ -170,22 +172,24 @@ str_collapse <- function(x, .c = "", ..., collapse = .c, recycle0 = FALSE){
 str_coll <- str_collapse
 #' @export
 #' @name string-collapse
-str_p0 <- function(x, .c = "", ..., collapse = .c, recycle0 = FALSE){
+str_p0 <- function(x, .c = "", ..., collapse = .c, recycle0 = FALSE) {
   str_collapse(x, .c = .c, ..., collapse = collapse, recycle0 = recycle0)
 }
 #' @export
 #' @name string-collapse
-str_p <- function(x, .c = " ", ..., collapse = .c, recycle0 = FALSE){
+str_p <- function(x, .c = " ", ..., collapse = .c, recycle0 = FALSE) {
   str_collapse(x, .c = .c, ..., collapse = collapse, recycle0 = recycle0)
 }
 
 
-#' String Lines
+#' Concatenate strings with `"\n"`.
 #'
 #' @param ... strings or R objects coercible to strings.
-#' @param .f a function or a formula. It uses a simplified version of [rlang::as_function].
+#' @param .f a function or a formula. It uses a simplified version of
+#'   [rlang::as_function].
 #' @param .args list with extra arguments for `.f`.
-#' @param .trailing TRUE or FALSE. If TRUE (default), a return (`"\n"`) is pasted at the end of the output string.
+#' @param .trailing TRUE or FALSE. If TRUE (default), a return (`"\n"`) is
+#'   pasted at the end of the output string.
 #'
 #' @return a string made of input strings separated by returns (`"\n"`).
 #' @examples
@@ -202,11 +206,11 @@ str_p <- function(x, .c = " ", ..., collapse = .c, recycle0 = FALSE){
 NULL
 #' @rdname string-line
 #' @export
-str_return <- function(..., .f = NULL, .args = NULL, .trailing = FALSE){
+str_return <- function(..., .f = NULL, .args = NULL, .trailing = FALSE) {
   x <- as.character(c(...))
   stopifnot(is.character(x))
-  if(!is.null(.f)){
-    if(is.character(.f) && length(.f) == 1){
+  if (!is.null(.f)) {
+    if (is.character(.f) && length(.f) == 1) {
       x <- paste0(x, collapse = .f)
     } else {
       fn <- as_function(.f)
@@ -221,12 +225,12 @@ str_return <- function(..., .f = NULL, .args = NULL, .trailing = FALSE){
 }
 #' @rdname string-line
 #' @export
-str_ret <- str_return
+str_r <- str_return
 #' @rdname string-line
 #' @export
-cat_return <- function(..., .f = NULL, .args = NULL){
+cat_return <- function(..., .f = NULL, .args = NULL) {
   x <- c(...)
-  if(!is.null(.f)){
+  if (!is.null(.f)) {
     fn <- as_function(.f)
     x <- do.call(fn, append(list(x), .args))
   }
@@ -234,7 +238,7 @@ cat_return <- function(..., .f = NULL, .args = NULL){
 }
 #' @rdname string-line
 #' @export
-cat_ret <- cat_return
+rcat <- cat_return
 
 #' Embrace Strings
 #'
@@ -251,23 +255,14 @@ cat_ret <- cat_return
 #' @examples
 #' x <- gsub("\\s", "_", rownames(mtcars))[1:12]
 #' x
-#'
 #' str_embrace(x, left = "-")
-#'
 #' str_embrace(x, left = "-", right = "--")
-#'
 #' str_embrace(x, left = "-", .c = str_oxford)
-#'
 #' str_parens(x)
-#'
 #' str_parens(x, "round")
-#'
 #' str_parens(x, "round", .c = str_oxford)
-#'
 #' str_parens(x, "squared")
-#'
 #' str_parens(x, "curly")
-#'
 #' str_parens(x, "angle")
 #' @name string-embrace
 NULL
@@ -352,7 +347,6 @@ str_oxford <- function(x, or = FALSE) {
 #' chr_to_symbolic(c("a", "c", "d", "e"))
 #' @name string-to-symbolic
 NULL
-#'
 #' @rdname string-to-symbolic
 #' @export
 str_to_symbolic <- function(x, strict = FALSE) {
@@ -371,6 +365,9 @@ str_to_symbolic <- function(x, strict = FALSE) {
   }
   out
 }
+#' @rdname string-to-symbolic
+#' @export
+str2symc <- str_to_symbolic
 #'
 #' @rdname string-to-symbolic
 #' @export
@@ -379,5 +376,25 @@ chr_to_symbolic <- function(x, strict = FALSE) {
     str_to_symbolic(x)
   } else {
     lapply(x, str_to_symbolic)
+  }
+}
+#' @rdname string-to-symbolic
+#' @export
+chr2symc <- chr_to_symbolic
+
+
+
+.str_as_vector <- function(x) {
+  n <- length(x)
+  if(n == 1) return(as.character(x))
+  sprintf("c(%s)", paste(x, collapse = ", "))
+}
+
+str_as_vector <- function(x){
+  if(is.list(x) && length(x) > 1){
+    out <- vapply(x, .str_as_vector, character(1))
+    setNames(out, names(x))
+  } else {
+    .str_as_vector(unlist(x))
   }
 }
