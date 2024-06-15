@@ -2,6 +2,8 @@
 
 export(all2)
 export(any2)
+export(as_sym)
+export(as_syms)
 export(cat_return)
 export(chr2symc)
 export(chr_to_symbolic)

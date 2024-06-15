@@ -5,19 +5,12 @@
 \alias{enlangs}
 \title{Convert to \code{"symbolic"} objects (symbols and calls)}
 \usage{
-enlang(
-  x,
-  .out_type = NULL,
-  .strict = FALSE,
-  .simplify = FALSE,
-  .no_ns = FALSE,
-  .no_args = FALSE
-)
+enlang(x, .strict = FALSE, .simplify = FALSE, .no_ns = FALSE, .no_args = FALSE)
 
 enlangs(
   ...,
   .x = NULL,
-  .out_type = NULL,
+  .named = NULL,
   .strict = FALSE,
   .simplify = FALSE,
   .no_ns = FALSE,
@@ -26,8 +19,6 @@ enlangs(
 }
 \arguments{
 \item{x}{.}
-
-\item{.out_type}{.}
 
 \item{.strict}{.}
 
@@ -40,6 +31,8 @@ enlangs(
 \item{...}{.}
 
 \item{.x}{.}
+
+\item{.out_type}{.}
 }
 \value{
 \code{\link[=enlang]{enlang()}} returns a symbolic object. \code{\link[=enlangs]{enlangs()}} returns a list of

@@ -1,30 +1,16 @@
-str_as_lang <- function(x, ..., .out_type = NULL, .strict = FALSE){
-  stopifnot("`...` must be empty." = ...length() == 0)
+str_as_lang <- function(x, .strict = FALSE){
   if(!is_string(x)){
     if(.strict) stop("Input must be a single string.")
     return(x)
   }
-  out <- tryCatch(str2lang(x), error = function(e) as.symbol(x))
-  if(is.null(.out_type)) {
-    return(out)
-  }
-  out <- as.list(out)
-  choices <- c("sym", "syms", "symbol", "symbols", "name",
-               "call", "calls", "language", "lang")
-  out_type <- match.arg(.out_type, choices)
-  if(out_type %in% c("sym", "syms", "symbol", "symbols", "name")){
-    out[[1]]
-  } else {
-    as.call(out)
-  }
+  tryCatch(str2lang(x), error = function(e) as.symbol(x))
 }
 
-chr_as_lang <- function(x, ..., .out_type = NULL, .named = FALSE, .strict = FALSE, .simplify = FALSE){
-  stopifnot("`...` must be empty." = ...length() == 0)
+chr_as_lang <- function(x, .named = FALSE, .strict = FALSE, .simplify = FALSE){
   if(.simplify && length(x) == 1) {
-    return(str_to_lang(x, .out_type = .out_type, .strict = .strict))
+    return(str_to_lang(x, .strict = .strict))
   }
-  out <- lapply(x, str_as_lang, .out_type = .out_type, .strict = .strict)
+  out <- lapply(x, str_as_lang, .strict = .strict)
   if(.named) names(out) <- x
   out
 }
@@ -32,8 +18,7 @@ chr_as_lang <- function(x, ..., .out_type = NULL, .named = FALSE, .strict = FALS
 
 
 
-fn_as_lang <- function(x, .out_type = NULL, .strict = FALSE,
-                       .simplify = FALSE, .no_ns = FALSE, .no_args = FALSE){
+fn_as_lang <- function(x, .strict = FALSE, .simplify = FALSE, .no_ns = FALSE, .no_args = FALSE){
   if(!is.function(x)){
     if(.strict) stop(stop("Input must be a function."))
     return(x)
@@ -51,22 +36,12 @@ fn_as_lang <- function(x, .out_type = NULL, .strict = FALSE,
 
   if(.no_ns) out[[1]] <- out[[1]][[3]]
   if(.no_args) out <- as.call(as.list(out[[1]]))
-
-  if(is.null(.out_type)){ return(out) }
-
-  choices <- c("sym", "syms", "symbol", "symbols", "name",
-               "call", "calls", "language", "lang")
-  out_type <- match.arg(.out_type, choices)
-  if(out_type %in% c("sym", "syms", "symbol", "symbols", "name")){
-    return(out[[1]])
-  }
   out
 }
 
-fns_as_lang <- function(x, .no_ns = FALSE, .out_type = NULL, .named = FALSE, .strict = FALSE, .simplify = FALSE){
+fns_as_lang <- function(x, .no_ns = FALSE, .strict = FALSE, .simplify = FALSE){
   if(!is.vector(x)) x <- c(x)
-  out <- lapply(x, fn_as_lang, .no_ns = .no_ns, .out_type = .out_type, .strict = .strict)
-  if(.named) names(out) <- vapply(out, \(x) deparse(as.list(x)[[1]]), character(1))
+  out <- lapply(x, fn_as_lang, .no_ns = .no_ns, .strict = .strict)
   if(.simplify && length(out) == 1) {
     return(out[[1]])
   }

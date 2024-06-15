@@ -178,6 +178,28 @@ is_syntactic_literal <- function(x) {
 }
 
 
+is_base_type <- function(x, class = NULL, type = NULL, n = NULL){
+  if(is.null(n)) {
+    n_out <- TRUE
+  } else {
+    n_out <- length(x) == n
+  }
+  if(is.null(type)){
+    out_type <- typeof(x) %in% c("logical", "integer", "double", "complex",
+                                 "character", "raw", "list")
+  }
+  if(is.null(class)) {
+    out_class <- class(x) %in%  c("logical", "integer", "double", "complex",
+                                  "character", "raw", "numeric")
+  }
+  all(n_out, out_type, out_class)
+}
+
+is_base_scalar <- function(x, class = NULL, type = NULL){
+  is_base_type(x, class = class, type = type, n = 1)
+}
+
+
 
 fns_list <- function(..., .predicate = NULL, .strict = FALSE){
   x <- list(...)
