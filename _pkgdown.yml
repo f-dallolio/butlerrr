@@ -5,13 +5,20 @@ reference:
 - title: Dots `(...)`
   contents:
   - "new-dots"
-  - "dots-lang"
-- title: Symbolic Objects (i.e. symbols and calls)
+- title: Symbolic Objects, Symbols, and Calls
+- subtitle: Conversion
   contents:
-  - starts_with("symbolic")
-  - starts_with("as_symbolic")
-- title: Calls
-  contents: starts_with("encall")
+  - "enlang"
+  - "encall"
+- subtitle: Types
+  contents:
+  - symbolic_type0
+  - symbolic_type
+  - symbolic_types
+- subtitle: Symbolics as Strings
+  contents:
+  - lang_auto_name
+  - lang_to_str
 - title: Functions
   contents: starts_with("fn")
 - title: Type Predicates

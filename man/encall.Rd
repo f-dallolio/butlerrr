@@ -5,55 +5,36 @@
 \alias{encalls}
 \title{Convert Object(s) to Call(s)}
 \usage{
-encall(x)
+encall(x, .strict = FALSE, .simplify = FALSE, .no_ns = FALSE, .no_args = FALSE)
 
-encalls(..., .x = NULL, .named = FALSE, .name_all = FALSE, .names_type = NULL)
+encalls(
+  ...,
+  .x = NULL,
+  .out_type = NULL,
+  .strict = FALSE,
+  .simplify = FALSE,
+  .no_ns = FALSE,
+  .no_args = FALSE
+)
 }
 \arguments{
-\item{x, .x}{an R object. Precisely, a syntactic literal, a symbol, a call, a
-function, or a formula.}
+\item{x, .x}{.}
 
-\item{...}{R objects as above.}
+\item{.strict}{.}
 
-\item{.named}{TRUE or FALSE. If \code{TRUE} (default), the unnamed elements of the
-output of \code{as_symbolic_objs} are automatically named.}
+\item{.simplify}{.}
 
-\item{.name_all}{TRUE or FALSE. If \code{TRUE} (default), all elements of the
-output of \code{as_symbolic_objs} are automatically named.}
+\item{.no_ns}{.}
 
-\item{.names_type}{one of \code{c("full", "sym", "head")}.
-\describe{
-\item{"full"}{The output is equivalent to \code{deparse(x)}.}
-\item{"sym"}{The function returns the string equivalent of a symbol \code{x} is a symbol or a call with no arguments.}
-\item{"head"}{The function returns only the string equivalent of a symbol or the call name.}
-}}
+\item{.no_args}{.}
+
+\item{...}{.}
+
+\item{.out_type}{.}
 }
 \value{
-A call (\code{encall}) or a list of calls (\code{encalls}).
+TODO.
 }
 \description{
-These functions take various R objects and return the equivalent
-named calls (e.g. \verb{func(x, ...), pkg::func(x, ...), etc.}).
-\itemize{
-\item \code{\link[=encall]{encall()}} returns a named call.
-\item \code{\link[=encalls]{encalls()}} returns a list of named calls.
-}
-}
-\examples{
-encall(quote(mean))
-encall("mean")
-encall("base::mean(1:10)")
-encall(quote(sd(1:10)))
-encall(quote(base::mean))
-
-encalls(quote(mean), "mean", "base::mean(1:10)", quote(sd(1:10)))
-
-x <- list(quote(mean), b = "mean", c = "base::mean(1:10)", quote(sd(1:10)))
-encalls("fn", .x = x)
-encalls("fn", .x = x, .named = TRUE)
-encalls("fn", .x = x, .named = TRUE, .name_all = TRUE)
-encalls("fn", .x = x, .named = TRUE, .name_all = TRUE, .names_type = "full")
-encalls("fn", .x = x, .named = TRUE, .name_all = TRUE, .names_type = "sym")
-encalls("fn", .x = x, .named = TRUE, .name_all = TRUE, .names_type = "head")
-
+Convert Object(s) to Call(s)
 }

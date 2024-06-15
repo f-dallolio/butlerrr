@@ -32,7 +32,7 @@ NULL
 #'
 #' @rdname symbolics-to-strings
 #' @export
-symbolic_to_str <- function(x, .names_type = c("full", "sym", "head")) {
+lang_to_str <- function(x, .names_type = c("full", "sym", "head")) {
   stopifnot("Input must be a symbol or a call." = rlang::is_symbolic(x))
 
   .names_type <- match.arg(.names_type)
@@ -46,16 +46,17 @@ symbolic_to_str <- function(x, .names_type = c("full", "sym", "head")) {
   if (.names_type == "head" || n == 1) {
     x <- x[[1]]
   }
-
   deparse(x)
 }
+symbolic_to_str <- lang_to_str
 #'
 #' @rdname symbolics-to-strings
 #' @export
-symbolic_to_chr <- function(x, .names_type = c("full", "sym", "head")) {
+lang_to_chr <- function(x, .names_type = c("full", "sym", "head")) {
   if (is.vector(x)) {
     vapply(x, symbolic_to_str, character(1), .names_type = .names_type)
   } else {
     symbolic_to_str(x, .names_type = .names_type)
   }
 }
+symbolic_to_chr <- lang_to_chr

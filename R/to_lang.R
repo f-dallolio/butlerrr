@@ -32,14 +32,28 @@ chr_as_lang <- function(x, ..., .out_type = NULL, .named = FALSE, .strict = FALS
 
 
 
-fn_as_lang <- function(x, .no_ns = FALSE, .out_type = NULL, .strict = FALSE){
+fn_as_lang <- function(x, .out_type = NULL, .strict = FALSE,
+                       .simplify = FALSE, .no_ns = FALSE, .no_args = FALSE){
   if(!is.function(x)){
     if(.strict) stop(stop("Input must be a function."))
     return(x)
   }
+  if(.simplify){
+    .no_ns <- TRUE
+    .no_args <- TRUE
+  }
+
   out <- fn_call(x)
+
+  if(.simplify){
+    .no_ns <- TRUE
+    .no_args <- TRUE}
+
   if(.no_ns) out[[1]] <- out[[1]][[3]]
-  if(is.null(.out_type)){return(out)}
+  if(.no_args) out <- as.call(as.list(out[[1]]))
+
+  if(is.null(.out_type)){ return(out) }
+
   choices <- c("sym", "syms", "symbol", "symbols", "name",
                "call", "calls", "language", "lang")
   out_type <- match.arg(.out_type, choices)
