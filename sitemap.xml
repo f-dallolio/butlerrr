@@ -16,13 +16,10 @@
     <loc>https://f-dallolio.github.io/butlerrr/index.html</loc>
   </url>
   <url>
-    <loc>https://f-dallolio.github.io/butlerrr/reference/as-symbolic.html</loc>
-  </url>
-  <url>
-    <loc>https://f-dallolio.github.io/butlerrr/reference/dots-lang.html</loc>
-  </url>
-  <url>
     <loc>https://f-dallolio.github.io/butlerrr/reference/encall.html</loc>
+  </url>
+  <url>
+    <loc>https://f-dallolio.github.io/butlerrr/reference/enlang.html</loc>
   </url>
   <url>
     <loc>https://f-dallolio.github.io/butlerrr/reference/function-calls.html</loc>
@@ -50,6 +47,9 @@
   </url>
   <url>
     <loc>https://f-dallolio.github.io/butlerrr/reference/is_syntactic_literal.html</loc>
+  </url>
+  <url>
+    <loc>https://f-dallolio.github.io/butlerrr/reference/lang_auto_name.html</loc>
   </url>
   <url>
     <loc>https://f-dallolio.github.io/butlerrr/reference/namespaced-language.html</loc>
@@ -86,9 +86,6 @@
   </url>
   <url>
     <loc>https://f-dallolio.github.io/butlerrr/reference/symbolic-types.html</loc>
-  </url>
-  <url>
-    <loc>https://f-dallolio.github.io/butlerrr/reference/symbolic_auto_name.html</loc>
   </url>
   <url>
     <loc>https://f-dallolio.github.io/butlerrr/reference/symbolics-to-strings.html</loc>

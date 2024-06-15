@@ -92,85 +92,29 @@
 </h3>
 <p>Some exaples for symbolic objects with <code>symc</code> (or <code>as_symbolic_obj</code>)…</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/f-dallolio/butlerrr" class="external-link">butlerrr</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/as-symbolic.html">symc</a></span><span class="op">(</span><span class="st">"mean"</span><span class="op">)</span> <span class="co"># string representation of a symbol returns a symbol</span></span>
-<span><span class="co">#&gt; mean</span></span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/as-symbolic.html">symc</a></span><span class="op">(</span><span class="st">"mean()"</span><span class="op">)</span> <span class="co"># string representation of a call returns a call</span></span>
-<span><span class="co">#&gt; mean()</span></span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/as-symbolic.html">symc</a></span><span class="op">(</span><span class="va">mean</span><span class="op">)</span> <span class="co"># a function returns the call including the function namespace.</span></span>
-<span><span class="co">#&gt; base::mean(x, ...)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># library(butlerrr)</span></span>
+<span><span class="co"># symc("mean") # string representation of a symbol returns a symbol</span></span>
+<span><span class="co"># symc("mean()") # string representation of a call returns a call</span></span>
+<span><span class="co"># symc(mean) # a function returns the call including the function namespace.</span></span></code></pre></div>
 <p>…and the vectorized version <code>symcs</code> (or <code>as_symbolic_objs</code>).</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"sd"</span>, <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/as-symbolic.html">symcs</a></span><span class="op">(</span><span class="st">"mean"</span>, <span class="st">"mean()"</span>, <span class="va">mean</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [[1]]</span></span>
-<span><span class="co">#&gt; mean</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[2]]</span></span>
-<span><span class="co">#&gt; mean()</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[3]]</span></span>
-<span><span class="co">#&gt; base::mean(x, ...)</span></span></code></pre></div>
+<span><span class="co"># symcs("mean", "mean()", mean)</span></span></code></pre></div>
 <p><code>symcs</code> (and <code>as_symbolic_objs</code>) also include an argument called <code>.x</code> for vector inputs that gets appended to the elements of <code>...</code> and arguments for naming. For example, <code>.named</code> that if <code>TRUE</code> automatically names the unnamed elements of the resulting list.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/as-symbolic.html">symcs</a></span><span class="op">(</span><span class="st">"mean"</span>, b <span class="op">=</span> <span class="st">"mean()"</span>, <span class="va">mean</span>, .x <span class="op">=</span> <span class="va">x</span>, .named <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; $mean</span></span>
-<span><span class="co">#&gt; mean</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $b</span></span>
-<span><span class="co">#&gt; mean()</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`base::mean(x, ...)`</span></span>
-<span><span class="co">#&gt; base::mean(x, ...)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $sd</span></span>
-<span><span class="co">#&gt; sd</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`1`</span></span>
-<span><span class="co">#&gt; `1`</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># symcs("mean", b = "mean()", mean, .x = x, .named = TRUE)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="calls">Calls<a class="anchor" aria-label="anchor" href="#calls"></a>
 </h3>
 <p><code>encall</code> and <code>encalls</code> do the same but convert objects to “named” calls (e.g. in the form <code>func(args)</code>).</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/encall.html">encall</a></span><span class="op">(</span><span class="st">"mean"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; mean()</span></span></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/encall.html">encall</a></span><span class="op">(</span><span class="st">"mean()"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; mean()</span></span></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/encall.html">encall</a></span><span class="op">(</span><span class="va">mean</span><span class="op">)</span></span>
-<span><span class="co">#&gt; base::mean(x, ...)</span></span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"sd"</span>, <span class="fl">1</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/encall.html">encalls</a></span><span class="op">(</span><span class="st">"mean"</span>, <span class="st">"mean()"</span>, <span class="va">mean</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [[1]]</span></span>
-<span><span class="co">#&gt; mean()</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[2]]</span></span>
-<span><span class="co">#&gt; mean()</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[3]]</span></span>
-<span><span class="co">#&gt; base::mean(x, ...)</span></span></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/encall.html">encalls</a></span><span class="op">(</span><span class="st">"mean"</span>, b <span class="op">=</span> <span class="st">"mean()"</span>, <span class="va">mean</span>, .x <span class="op">=</span> <span class="va">x</span>, .named <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; $`mean()`</span></span>
-<span><span class="co">#&gt; mean()</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $b</span></span>
-<span><span class="co">#&gt; mean()</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`base::mean(x, ...)`</span></span>
-<span><span class="co">#&gt; base::mean(x, ...)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`sd()`</span></span>
-<span><span class="co">#&gt; sd()</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $``1`()`</span></span>
-<span><span class="co">#&gt; `1`()</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># encall("mean")</span></span>
+<span><span class="co"># encall("mean()")</span></span>
+<span><span class="co"># encall(mean)</span></span>
+<span><span class="co"># x &lt;- list("sd", 1)</span></span>
+<span><span class="co"># encalls("mean", "mean()", mean)</span></span>
+<span><span class="co"># encalls("mean", b = "mean()", mean, .x = x, .named = TRUE)</span></span></code></pre></div>
 </div>
 </div>
 </div>
