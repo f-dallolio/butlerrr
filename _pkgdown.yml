@@ -15,13 +15,13 @@ reference:
   contents:
   - lang_auto_name
   - lang_to_str
-- subtitle: Symbolic Types
+- title: Functions
+  contents: starts_with("fn")
+- title: Symbolic Types
   contents:
   - symbolic_type0
   - symbolic_type
   - symbolic_types
-- title: Functions
-  contents: starts_with("fn")
 - title: Type Predicates
   contents: starts_with("is")
 - title: Vectorised Predicates
