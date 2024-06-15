@@ -2,7 +2,7 @@
 % Please edit documentation in R/lang_auto_name.R
 \name{lang_auto_name}
 \alias{lang_auto_name}
-\title{Automatic Names for Lists of Symbolics}
+\title{Automatic Names for Lists of Expressions}
 \usage{
 lang_auto_name(x, .name_all = FALSE, .names_type = c("full", "sym", "head"))
 }
@@ -20,5 +20,5 @@ lang_auto_name(x, .name_all = FALSE, .names_type = c("full", "sym", "head"))
 a named list of symbolics.
 }
 \description{
-Automatic Names for Lists of Symbolics
+Automatic Names for Lists of Expressions
 }

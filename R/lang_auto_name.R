@@ -1,4 +1,4 @@
-#' Automatic Names for Lists of Symbolics
+#' Automatic Names for Lists of Expressions
 #'
 #' @inheritParams lang_to_str
 #'
