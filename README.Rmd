@@ -43,23 +43,23 @@ Specifically, `symc` (alias for `as_symbolic_obj`) and `encall`, as well as thei
 Some exaples for symbolic objects with `symc` (or `as_symbolic_obj`)...
 
 ```{r}
-library(butlerrr)
-symc("mean") # string representation of a symbol returns a symbol
-symc("mean()") # string representation of a call returns a call
-symc(mean) # a function returns the call including the function namespace.
+# library(butlerrr)
+# symc("mean") # string representation of a symbol returns a symbol
+# symc("mean()") # string representation of a call returns a call
+# symc(mean) # a function returns the call including the function namespace.
 ```
 
 ...and the vectorized version `symcs` (or `as_symbolic_objs`).
 
 ```{r}
 x <- list("sd", 1)
-symcs("mean", "mean()", mean)
+# symcs("mean", "mean()", mean)
 ```
 
 `symcs` (and `as_symbolic_objs`) also include an argument called `.x` for vector inputs that gets appended to the elements of `...` and arguments for naming. For example, `.named` that if `TRUE` automatically names the unnamed elements of the resulting list.
 
 ``` {r}
-symcs("mean", b = "mean()", mean, .x = x, .named = TRUE)
+# symcs("mean", b = "mean()", mean, .x = x, .named = TRUE)
 ```
 
 ### Calls
@@ -67,10 +67,10 @@ symcs("mean", b = "mean()", mean, .x = x, .named = TRUE)
 `encall` and `encalls` do the same but convert objects to "named" calls (e.g. in the form `func(args)`).
 
 ```{r}
-encall("mean")
-encall("mean()")
-encall(mean)
-x <- list("sd", 1)
-encalls("mean", "mean()", mean)
-encalls("mean", b = "mean()", mean, .x = x, .named = TRUE)
+# encall("mean")
+# encall("mean()")
+# encall(mean)
+# x <- list("sd", 1)
+# encalls("mean", "mean()", mean)
+# encalls("mean", b = "mean()", mean, .x = x, .named = TRUE)
 ```

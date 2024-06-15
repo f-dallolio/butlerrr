@@ -37,34 +37,17 @@ calls) and calls.
 Some exaples for symbolic objects with `symc` (or `as_symbolic_obj`)…
 
 ``` r
-library(butlerrr)
-symc("mean") # string representation of a symbol returns a symbol
-#> mean
-```
-
-``` r
-symc("mean()") # string representation of a call returns a call
-#> mean()
-```
-
-``` r
-symc(mean) # a function returns the call including the function namespace.
-#> base::mean(x, ...)
+# library(butlerrr)
+# symc("mean") # string representation of a symbol returns a symbol
+# symc("mean()") # string representation of a call returns a call
+# symc(mean) # a function returns the call including the function namespace.
 ```
 
 …and the vectorized version `symcs` (or `as_symbolic_objs`).
 
 ``` r
 x <- list("sd", 1)
-symcs("mean", "mean()", mean)
-#> [[1]]
-#> mean
-#> 
-#> [[2]]
-#> mean()
-#> 
-#> [[3]]
-#> base::mean(x, ...)
+# symcs("mean", "mean()", mean)
 ```
 
 `symcs` (and `as_symbolic_objs`) also include an argument called `.x`
@@ -73,21 +56,7 @@ arguments for naming. For example, `.named` that if `TRUE` automatically
 names the unnamed elements of the resulting list.
 
 ``` r
-symcs("mean", b = "mean()", mean, .x = x, .named = TRUE)
-#> $mean
-#> mean
-#> 
-#> $b
-#> mean()
-#> 
-#> $`base::mean(x, ...)`
-#> base::mean(x, ...)
-#> 
-#> $sd
-#> sd
-#> 
-#> $`1`
-#> `1`
+# symcs("mean", b = "mean()", mean, .x = x, .named = TRUE)
 ```
 
 ### Calls
@@ -96,47 +65,10 @@ symcs("mean", b = "mean()", mean, .x = x, .named = TRUE)
 (e.g. in the form `func(args)`).
 
 ``` r
-encall("mean")
-#> mean()
-```
-
-``` r
-encall("mean()")
-#> mean()
-```
-
-``` r
-encall(mean)
-#> base::mean(x, ...)
-```
-
-``` r
-x <- list("sd", 1)
-encalls("mean", "mean()", mean)
-#> [[1]]
-#> mean()
-#> 
-#> [[2]]
-#> mean()
-#> 
-#> [[3]]
-#> base::mean(x, ...)
-```
-
-``` r
-encalls("mean", b = "mean()", mean, .x = x, .named = TRUE)
-#> $`mean()`
-#> mean()
-#> 
-#> $b
-#> mean()
-#> 
-#> $`base::mean(x, ...)`
-#> base::mean(x, ...)
-#> 
-#> $`sd()`
-#> sd()
-#> 
-#> $``1`()`
-#> `1`()
+# encall("mean")
+# encall("mean()")
+# encall(mean)
+# x <- list("sd", 1)
+# encalls("mean", "mean()", mean)
+# encalls("mean", b = "mean()", mean, .x = x, .named = TRUE)
 ```
