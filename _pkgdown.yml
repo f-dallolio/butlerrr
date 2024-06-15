@@ -5,21 +5,21 @@ reference:
 - title: Dots `(...)`
   contents:
   - "new-dots"
-- title: Symbolic Objects, Symbols, and Calls
+- title: Language Objects
 - subtitle: Conversion
   contents:
   - "enlang"
   - "encall"
   - "as_sym"
-- subtitle: Types
+- subtitle: To Strings
+  contents:
+  - lang_auto_name
+  - lang_to_str
+- subtitle: Symbolic Types
   contents:
   - symbolic_type0
   - symbolic_type
   - symbolic_types
-- subtitle: Symbolics as Strings
-  contents:
-  - lang_auto_name
-  - lang_to_str
 - title: Functions
   contents: starts_with("fn")
 - title: Type Predicates
