@@ -3,7 +3,7 @@
 \name{enlang}
 \alias{enlang}
 \alias{enlangs}
-\title{Convert to \code{"symbolic"} objects (symbols and calls)}
+\title{Convert to \code{"expressions"} (similar to \code{\link[rlang:expr]{rlang::expr()}})}
 \usage{
 enlang(x, .strict = FALSE, .simplify = FALSE, .no_ns = FALSE, .no_args = FALSE)
 
@@ -39,5 +39,5 @@ enlangs(
 symbolic objects.
 }
 \description{
-Convert to \code{"symbolic"} objects (symbols and calls)
+Convert to \code{"expressions"} (similar to \code{\link[rlang:expr]{rlang::expr()}})
 }

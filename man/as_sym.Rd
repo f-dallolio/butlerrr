@@ -3,7 +3,7 @@
 \name{as_sym}
 \alias{as_sym}
 \alias{as_syms}
-\title{Convert Object(s) to Symbol(s)}
+\title{Convert to Symbol(s)}
 \usage{
 as_sym(x, .strict = FALSE, .simplify = FALSE, .no_ns = FALSE, .no_args = TRUE)
 
@@ -34,5 +34,5 @@ as_syms(
 TODO.
 }
 \description{
-Convert Object(s) to Symbol(s)
+Convert to Symbol(s)
 }

@@ -3,7 +3,7 @@
 \name{encall}
 \alias{encall}
 \alias{encalls}
-\title{Convert Object(s) to Call(s)}
+\title{Convert to Named Call(s)}
 \usage{
 encall(x, .strict = FALSE, .simplify = FALSE, .no_ns = FALSE, .no_args = FALSE)
 
@@ -34,5 +34,5 @@ encalls(
 TODO.
 }
 \description{
-Convert Object(s) to Call(s)
+Convert to Named Call(s)
 }

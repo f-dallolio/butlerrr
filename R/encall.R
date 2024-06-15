@@ -1,4 +1,4 @@
-#' Convert Object(s) to Call(s)
+#' Convert to Named Call(s)
 #'
 #' @inheritParams enlang
 #'

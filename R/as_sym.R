@@ -1,4 +1,4 @@
-#' Convert Object(s) to Symbol(s)
+#' Convert to Symbol(s)
 #'
 #' @inheritParams enlang
 #'
