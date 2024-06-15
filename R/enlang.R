@@ -1,4 +1,4 @@
-#' Convert to `"symbolic"` objects (symbols and calls)
+#' Convert to `"expressions"` (similar to [rlang::expr()])
 #'
 #' @param x .
 #' @param ... .
