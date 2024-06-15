@@ -2,12 +2,23 @@
 % Please edit documentation in R/as_sym.R
 \name{as_sym}
 \alias{as_sym}
+\alias{as_syms}
 \title{Convert Object(s) to Symbol(s)}
 \usage{
 as_sym(x, .strict = FALSE, .simplify = FALSE, .no_ns = FALSE, .no_args = TRUE)
+
+as_syms(
+  ...,
+  .x = NULL,
+  .named = NULL,
+  .strict = FALSE,
+  .simplify = TRUE,
+  .no_ns = FALSE,
+  .no_args = FALSE
+)
 }
 \arguments{
-\item{x}{.}
+\item{x, .x}{.}
 
 \item{.strict}{.}
 
@@ -16,6 +27,8 @@ as_sym(x, .strict = FALSE, .simplify = FALSE, .no_ns = FALSE, .no_args = TRUE)
 \item{.no_ns}{.}
 
 \item{.no_args}{.}
+
+\item{...}{.}
 }
 \value{
 TODO.
