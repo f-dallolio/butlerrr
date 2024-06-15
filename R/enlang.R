@@ -42,7 +42,7 @@ enlang <- function(x, .strict = FALSE, .simplify = FALSE, .no_ns = FALSE, .no_ar
 enlangs <- function(..., .x =NULL, .named = NULL, .strict = FALSE, .simplify = FALSE, .no_ns = FALSE, .no_args = FALSE){
   x <- append(list(...), .x)
   out <- lapply(X = x,
-                FUN = lang,
+                FUN = enlang,
                 .strict = .strict,
                 .simplify = .simplify,
                 .no_ns = .no_ns,
