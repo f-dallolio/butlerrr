@@ -19,7 +19,7 @@ only) a POSIXct or POSIXlt or Date object; or an S4 object containing such
 an object.}
 
 \item{times}{an integer-valued vector giving the (non-negative) number of
-times to repeat each element if of length length(x), or to repeat the whole
+times to repeat each element if of length \code{length(x)}, or to repeat the whole
 vector if of length 1. Negative or NA values are an error. A double vector
 is accepted, other inputs being coerced to an integer or double vector.}
 

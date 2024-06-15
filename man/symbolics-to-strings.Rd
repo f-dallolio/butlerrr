@@ -2,13 +2,13 @@
 % Please edit documentation in R/symbolic_to_strings.R
 \name{symbolics-to-strings}
 \alias{symbolics-to-strings}
-\alias{symbolic_to_str}
-\alias{symbolic_to_chr}
+\alias{lang_to_str}
+\alias{lang_to_chr}
 \title{Symbolic to string or character vector}
 \usage{
-symbolic_to_str(x, .names_type = c("full", "sym", "head"))
+lang_to_str(x, .names_type = c("full", "sym", "head"))
 
-symbolic_to_chr(x, .names_type = c("full", "sym", "head"))
+lang_to_chr(x, .names_type = c("full", "sym", "head"))
 }
 \arguments{
 \item{x}{a symbol, or a call.}
