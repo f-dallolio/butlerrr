@@ -1,4 +1,4 @@
-#' Symbolic to string or character vector
+#' Expressions to Strings or Character Vectors
 #'
 #' @param x a symbol, or a call.
 #' @param .names_type one of `c("full", "sym", "head")`.

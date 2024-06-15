@@ -1,4 +1,4 @@
-#' Convert to Named Call(s)
+#' Convert to Named Calls (e.g. `func()`)
 #'
 #' @inheritParams enlang
 #'
