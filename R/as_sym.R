@@ -14,7 +14,7 @@ as_sym <- function(x, .strict = FALSE,.simplify = FALSE, .no_ns = FALSE, .no_arg
   as.symbol(out)
 }
 
-#' @name encall
+#' @name as_sym
 #' @export
 as_syms <- function(..., .x =NULL, .named =NULL, .strict = FALSE, .simplify = TRUE, .no_ns = FALSE, .no_args = FALSE){
   x <- append(list(...), .x)
