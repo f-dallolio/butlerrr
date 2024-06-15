@@ -10,6 +10,7 @@ reference:
   contents:
   - "enlang"
   - "encall"
+  - "as_sym"
 - subtitle: Types
   contents:
   - symbolic_type0
