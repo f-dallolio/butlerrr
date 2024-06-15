@@ -28,6 +28,6 @@ reference:
   contents: vectorised-predicates
 - title: Strings
   contents: starts_with("str")
-- title: Replication
+- title: Replicate
   contents: starts_with("rep")
 
