@@ -10,14 +10,14 @@ lang_auto_name <- function(x,
                            .name_all = FALSE,
                            .names_type = c("full", "sym", "head")) {
   if (rlang::is_symbolic(x)) {
-    setNames(c(x), symbolic_to_str(x, .names_type = .names_type))
+    setNames(c(x), lang_to_str(x, .names_type = .names_type))
   } else {
     nms <- names(x)
     if (is.null(nms) || .name_all) {
       names(x) <- nms <- rep("", length(x))
     }
     pos <- nms == ""
-    names(x)[pos] <- symbolic_to_chr(x[pos], .names_type = .names_type)
+    names(x)[pos] <- lang_to_chr(x[pos], .names_type = .names_type)
     x
   }
 }

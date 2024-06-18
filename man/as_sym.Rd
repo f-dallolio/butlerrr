@@ -11,6 +11,7 @@ as_syms(
   ...,
   .x = NULL,
   .named = NULL,
+  .name_types = NULL,
   .strict = FALSE,
   .simplify = TRUE,
   .no_ns = FALSE,

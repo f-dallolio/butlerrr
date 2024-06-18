@@ -30,4 +30,6 @@ reference:
   contents: starts_with("str")
 - title: Replicate
   contents: starts_with("rep")
+- title: Standalone Functions
+  contents: purrr-standalone
 

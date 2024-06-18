@@ -177,7 +177,12 @@ is_syntactic_literal <- function(x) {
   )
 }
 
-
+#' Is an object a base type?
+#'
+#' @name base-type
+NULL
+#' @rdname base-type
+#' @export
 is_base_type <- function(x, class = NULL, type = NULL, n = NULL){
   if(is.null(n)) {
     n_out <- TRUE
@@ -187,14 +192,20 @@ is_base_type <- function(x, class = NULL, type = NULL, n = NULL){
   if(is.null(type)){
     out_type <- typeof(x) %in% c("logical", "integer", "double", "complex",
                                  "character", "raw", "list")
+  } else {
+    out_type <-  typeof(x) == type
   }
+
   if(is.null(class)) {
     out_class <- class(x) %in%  c("logical", "integer", "double", "complex",
                                   "character", "raw", "numeric")
+  } else {
+    out_class <-  class(x) == class
   }
   all(n_out, out_type, out_class)
 }
-
+#' @rdname base-type
+#' @export
 is_base_scalar <- function(x, class = NULL, type = NULL){
   is_base_type(x, class = class, type = type, n = 1)
 }

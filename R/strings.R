@@ -331,6 +331,102 @@ str_oxford <- function(x, or = FALSE) {
     stringr::str_flatten_comma(x, last = ", and ")
   }
 }
+strsplit
+
+str_sep <- function (x, split, sel = NULL, fixed = FALSE, perl = FALSE, useBytes = FALSE) {
+  out <- strsplit(x, split, fixed = FALSE, perl = FALSE, useBytes = FALSE)
+  n <- length(out)
+  if(is.null(sel)){
+    if(n == 1) return(out[[1]])
+    return(out)
+  }
+  out <- lapply(out, get_elements, pos = sel)
+  if(n == 1) return(out[[1]])
+  nn <- lengths(out)
+  if(all(nn <= 1)){
+    out[nn == 0] <- NA_character_
+    return(unlist(out))
+  }
+  out
+}
+
+get_elements <- function(x, pos, pos_out = FALSE, ignore.case = FALSE, perl = FALSE, fixed = FALSE, useBytes = FALSE, strict = FALSE, warn = TRUE){
+  if(is_string(pos)){
+    pos <- grep(pattern = pos,
+                 x = x,
+                 ignore.case = ignore.case,
+                 perl = perl,
+                 fixed = fixed,
+                 useBytes = useBytes)
+  } else {
+    pos <- as.integer(pos)
+  }
+  if(length(pos) == 0) pos <- 0
+  n <- length(x)
+  flag <- max(pos) > n
+  if(flag){
+    msg <- sprintf("`pos` is larger than the length of `x` (%i)", n)
+    if(strict) stop(msg)
+    if(warn) cat("Warning:", msg, "\n")
+  }
+  pos <- pos[as.integer(pos) <= n]
+  out <- x[pos]
+  if(pos_out) {
+    out <- rep_along(FALSE, x)
+    out[pos] <- TRUE
+  }
+  out
+}
+
+flag_elements <- function(x, .p, ..., .names = FALSE, .strict = FALSE){
+  if(.names){
+    if(.strict) stopifnot("Input is not named" = !is.null(names(x)))
+    if(is.null(names(x))) return(NULL)
+    x <- names(x)
+  }
+  if(is.character(.p) || is.numeric(.p)){
+    .f <- function(x, ...) get_elements(x, pos = .p, pos_out = TRUE)
+  } else {
+    .f <- as_function(.p)
+  }
+  if(is.list(x)){
+    pos <- vapply(x, .f, logical(1), ...)
+  } else {
+    pos <- .f(x)
+  }
+  pos
+}
+
+flag_names <- function(x, .p, ...){
+  flag_elements(x, .p, ..., .names = TRUE)
+}
+
+which_elements <- function(x, .p, ..., .names = FALSE, .strict = FALSE){
+  pos <- flag_elements(x = x, .p = .p, ..., .names = .names, .strict = .strict)
+  which(pos)
+}
+
+which_named <- function(x, .p, ...){
+  which_elements(x, .p, ..., .names = TRUE)
+}
+
+keep_elements <- function(x, .p, ..., .names = FALSE, .strict = FALSE){
+  pos <- flag_elements(x = x, .p = .p, ..., .names = .names, .strict = .strict)
+  x[pos]
+}
+
+keep_named <- function(x, .p, ...){
+  keep_elements(x, .p, ..., .names = TRUE)
+}
+
+discard_elements <- function(x, .p, ..., .names =FALSE){
+  pos <- flag_elements(x = x, .p = .p, ..., .names = .names, .strict = .strict)
+  x[!pos]
+}
+
+discard_named <- function(x, .p, ...){
+  discard_elements(x, .p, ..., .names = TRUE)
+}
 
 #' Convert Strings to Symbolic Objects (generalizes [base::str2lang])
 #'
@@ -384,15 +480,14 @@ chr2symc <- chr_to_symbolic
 
 
 
-.str_as_vector <- function(x) {
-  n <- length(x)
-  if(n == 1) return(as.character(x))
-  sprintf("c(%s)", paste(x, collapse = ", "))
-}
-
 str_as_vector <- function(x){
+  .f <- function(x){
+    n <- length(x)
+    if(n == 1) return(as.character(x))
+    sprintf("c(%s)", paste(x, collapse = ", "))
+  }
   if(is.list(x) && length(x) > 1){
-    out <- vapply(x, .str_as_vector, character(1))
+    out <- vapply(x, .f, character(1))
     setNames(out, names(x))
   } else {
     .str_as_vector(unlist(x))

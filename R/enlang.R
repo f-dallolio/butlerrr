@@ -21,8 +21,8 @@ enlang <- function(x, .strict = FALSE, .simplify = FALSE, .no_ns = FALSE, .no_ar
     out <- str_as_lang(x, .strict = .strict)
     return(out)
   }
-  if(is_base_type(x, n = 1)) {
-    out <- str_as_lang(deparse(x), .strict = .strict)
+  if(is.atomic(x) && length(x) == 1) {
+    out <- str_as_lang(as.character(x), .strict = .strict)
     return(out)
   }
   if(typeof(x) %in% c("closure", "special", "builtin")){
@@ -39,7 +39,7 @@ enlang <- function(x, .strict = FALSE, .simplify = FALSE, .no_ns = FALSE, .no_ar
 }
 #' @rdname enlang
 #' @export
-enlangs <- function(..., .x =NULL, .named = NULL, .strict = FALSE, .simplify = FALSE, .no_ns = FALSE, .no_args = FALSE){
+enlangs <- function(..., .x =NULL, .named = NULL, .name_types = NULL, .strict = FALSE, .simplify = FALSE, .no_ns = FALSE, .no_args = FALSE){
   x <- append(list(...), .x)
   out <- lapply(X = x,
                 FUN = enlang,
@@ -48,5 +48,5 @@ enlangs <- function(..., .x =NULL, .named = NULL, .strict = FALSE, .simplify = F
                 .no_ns = .no_ns,
                 .no_args = .no_args)
   if(is.null(.named)) return(out)
-  lang_auto_name(out, .names_type = .named)
+  lang_auto_name(out, .names_type = .name_types)
 }

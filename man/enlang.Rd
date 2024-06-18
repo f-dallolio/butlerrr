@@ -11,6 +11,7 @@ enlangs(
   ...,
   .x = NULL,
   .named = NULL,
+  .name_types = NULL,
   .strict = FALSE,
   .simplify = FALSE,
   .no_ns = FALSE,
