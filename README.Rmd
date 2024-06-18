@@ -32,7 +32,7 @@ devtools::install_github("f-dallolio/butlerrr")
 
 ## Why `butlerrr`?
 
-`Butlerrr` provides helper and convenience functions to help with the coding and manipulation of different kinds of R objects. 
+`butlerrr` provides helper and convenience functions to help with the coding and manipulation of different kinds of R objects. 
 
 Some of the most important functions in `butlerrr` deal with symbolic objects and calls. 
 
