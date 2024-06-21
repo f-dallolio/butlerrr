@@ -16,6 +16,13 @@ reference:
   contents:
   - lang_auto_name
   - lang_to_str
+- subtitle: Predicates
+  contents: starts_with("lang-is")
+- subtitle: Helpers
+  contents:
+  - "match_call"
+  - new_call_simple
+  - call_simple
 - title: Functions
   contents: starts_with("fn_")
 - title: Symbolic Types
@@ -24,7 +31,9 @@ reference:
   - symbolic_type
   - symbolic_types
 - title: Type Predicates
-  contents: starts_with("is")
+  contents:
+  - starts_with("is")
+  - -starts_with("lang-is")
 - title: Vectorised Predicates
   contents: vectorised-predicates
 - title: Strings
