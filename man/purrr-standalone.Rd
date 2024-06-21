@@ -54,7 +54,7 @@ map2_dbl(.x, .y, .f, ...)
 
 map2_chr(.x, .y, .f, ...)
 
-imap(.x, .f, ...)
+imap(.x, .f, ..., .index_only = FALSE)
 
 pmap(.l, .f, ...)
 
