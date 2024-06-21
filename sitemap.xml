@@ -46,12 +46,6 @@
     <loc>https://f-dallolio.github.io/butlerrr/reference/is-named.html</loc>
   </url>
   <url>
-    <loc>https://f-dallolio.github.io/butlerrr/reference/is-symbol-call-2.html</loc>
-  </url>
-  <url>
-    <loc>https://f-dallolio.github.io/butlerrr/reference/is-symbolic2.html</loc>
-  </url>
-  <url>
     <loc>https://f-dallolio.github.io/butlerrr/reference/is_integer_chr.html</loc>
   </url>
   <url>
@@ -61,19 +55,31 @@
     <loc>https://f-dallolio.github.io/butlerrr/reference/is_string.html</loc>
   </url>
   <url>
-    <loc>https://f-dallolio.github.io/butlerrr/reference/is_syntactic_literal.html</loc>
+    <loc>https://f-dallolio.github.io/butlerrr/reference/is_whole.html</loc>
   </url>
   <url>
-    <loc>https://f-dallolio.github.io/butlerrr/reference/is_whole.html</loc>
+    <loc>https://f-dallolio.github.io/butlerrr/reference/lang-is-callable.html</loc>
+  </url>
+  <url>
+    <loc>https://f-dallolio.github.io/butlerrr/reference/lang-is-expr.html</loc>
+  </url>
+  <url>
+    <loc>https://f-dallolio.github.io/butlerrr/reference/lang-is-namespaced.html</loc>
+  </url>
+  <url>
+    <loc>https://f-dallolio.github.io/butlerrr/reference/lang-is-sym-call.html</loc>
+  </url>
+  <url>
+    <loc>https://f-dallolio.github.io/butlerrr/reference/lang-is-symbolic.html</loc>
+  </url>
+  <url>
+    <loc>https://f-dallolio.github.io/butlerrr/reference/lang-is-syntactic-literal.html</loc>
   </url>
   <url>
     <loc>https://f-dallolio.github.io/butlerrr/reference/lang_auto_name.html</loc>
   </url>
   <url>
     <loc>https://f-dallolio.github.io/butlerrr/reference/match-call.html</loc>
-  </url>
-  <url>
-    <loc>https://f-dallolio.github.io/butlerrr/reference/namespaced-language.html</loc>
   </url>
   <url>
     <loc>https://f-dallolio.github.io/butlerrr/reference/new-call.html</loc>
