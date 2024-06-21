@@ -85,8 +85,13 @@ map2_chr <- function(.x, .y, .f, ...) {
 
 #' @rdname purrr-standalone
 #' @export
-imap <- function(.x, .f, ...) {
-  map2(.x, names(.x) %||% seq_along(.x), .f, ...)
+imap <- function(.x, .f, ..., .index_only = FALSE) {
+  if(.index_only){
+    .y <- seq_along(.x)
+  } else {
+    .y <- names(.x) %||% seq_along(.x)
+  }
+  map2(.x, .y, .f, ...)
 }
 
 #' @rdname purrr-standalone

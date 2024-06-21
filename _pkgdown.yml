@@ -3,6 +3,7 @@ template:
   bootstrap: 5
 reference:
 - title: Dots `(...)`
+  desc: Management of `...` for easier coding.
   contents:
   - "new-dots"
 - title: Language Objects
@@ -16,7 +17,7 @@ reference:
   - lang_auto_name
   - lang_to_str
 - title: Functions
-  contents: starts_with("fn")
+  contents: starts_with("fn_")
 - title: Symbolic Types
   contents:
   - symbolic_type0
@@ -30,6 +31,15 @@ reference:
   contents: starts_with("str")
 - title: Replicate
   contents: starts_with("rep")
+- title: Naming
+  contents:
+  - set-names
+  - is-named
+  - are-named
+- title: Utilities
+  contents:
+  - match-call
+  - new-call
 - title: Standalone Functions
   contents: purrr-standalone
 

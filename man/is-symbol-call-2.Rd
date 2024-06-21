@@ -4,11 +4,14 @@
 \alias{is-symbol-call-2}
 \alias{is_symbol2}
 \alias{is_call2}
+\alias{is_call_simple}
 \title{Extensions of \code{\link[rlang:is_symbol]{rlang::is_symbol()}} and \code{\link[rlang:is_call]{rlang::is_call()}}}
 \usage{
 is_symbol2(x, name = NULL, ns_sym_is_sym = TRUE)
 
 is_call2(x, name = NULL, n = NULL, ns = NULL, ns_sym_is_call = FALSE)
+
+is_call_simple(x, ns = NULL)
 }
 \arguments{
 \item{x}{An object to test. Formulas and quosures are treated

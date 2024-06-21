@@ -1,3 +1,14 @@
+#' Is a number whole?
+#'
+#' @param x a numeric vector.
+#' @param tol tolerance.
+#'
+#' @return TRUE or FALSE
+#' @export
+is_whole <-function(x, tol = .Machine$double.eps^0.5)  {
+  abs(x - round(x)) < tol
+}
+
 #' Does a character vector only contains numbers?
 #'
 #' @param x a character vector or an object coercible to one.
@@ -10,7 +21,6 @@ is_numeric_chr <- function(x, na.omit = TRUE) {
   if (!is.character(x)) x <- as.character(x)
   all(grepl("^[[:digit:]]+$", x))
 }
-
 
 #' Does a character vector only contains integers?
 #'
@@ -84,8 +94,6 @@ is_ns_call <- function(x, ns = NULL, private = NULL) {
   TRUE
 }
 
-
-
 #' Extensions of [rlang::is_symbol()] and [rlang::is_call()]
 #'
 #' @inheritParams rlang::is_call
@@ -131,6 +139,28 @@ is_call2 <- function(x, name = NULL, n = NULL, ns = NULL, ns_sym_is_call = FALSE
     }
   }
   rlang::is_call(x, name = name, n = n, ns = ns)
+}
+#'
+#' @rdname is-symbol-call-2
+#' @export
+is_call_simple <- function(x, ns = NULL){
+
+  if (inherits(x, "formula")) {
+    x <- as.list(x)[-1]
+  }
+
+  if(!is.call(x) || is_ns_sym(x)){
+    return(FALSE)
+  }
+
+  head <- x[[1]]
+  ns_head <- is_ns_sym(head)
+
+  if(!is.null(ns) && !identical(ns_head, ns)){
+    return(FALSE)
+  }
+
+  is.symbol(head) || ns_head
 }
 
 #' Is an object a call or a symbol?
