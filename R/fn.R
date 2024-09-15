@@ -90,7 +90,6 @@ fn_from_chr <- function(x, ..., stop_not_found = FALSE){
 #' @examples
 #' # fn_name("mean")
 #' # fn_name2("mean")
-#'
 #'@rdname fn-name
 #'@export
 fn_name <- function(x, ...) {

@@ -24,5 +24,4 @@ Get Function Name from Function
 \examples{
 # fn_name("mean")
 # fn_name2("mean")
-
 }
