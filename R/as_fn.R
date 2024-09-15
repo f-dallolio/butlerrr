@@ -3,33 +3,28 @@
 #' This function converts a one-sided formula into a function. It is a
 #' simplified version of [rlang::as_function][rlang::as_function].
 #'
-#' @param .f A one-sided formula or a function. If `.str = TRUE`, it also
+#' @param x A one-sided formula or a function. If `.str = TRUE`, it also
 #'   accepts a string.
 #' @param ... Must remain empty.
-#' @param .str If `TRUE` (default), `.f` can also be a string. If `FALSE` and
-#'   `.f` is not a one-sided formula or a function, it returns its input.
-#' @param .env Only for `.str = TRUE`. The environment where to get the
-#'   function.
-
 #'
 #' @return A function.
 #' @export
-as_fn <- function(.f, ..., .env = .GlobalEnv){
+as_fn <- function(x, ...){
   stopifnot(...length() == 0)
-  if (inherits(.f, "formula")) {
-    .f <- as.list(.f)
+  if (inherits(x, "formula")) {
+    x <- as.list(x)
     fn <- function(..., .x = ..1, .y = ..2, . = ..1){}
-    body(fn) <- .f[[length(.f)]]
-    environment(fn) <- environment(.f)
+    body(fn) <- x[[length(x)]]
+    environment(fn) <- environment(x)
     class(fn) <- c("rlang_lambda_function", class(fn))
     return(fn)
   }
-  if(is.function(.f)) return(.f)
-  if(is.character(.f) && length(.f) == 1){
-    out <- get(.f, envir = .env, mode = "function")
+  if(is.function(x)) return(x)
+  if(is.character(x) && length(x) == 1){
+    out <- fn_from_chr(x)
     return(out)
   }
-  stop("`.f` must be a formula, a function, or a string.")
+  stop("`x` must be a formula, a function, or a string.")
 }
 #
 # fn_eval <- function(.x, .f, ..., .env = .GlobalEnv) {

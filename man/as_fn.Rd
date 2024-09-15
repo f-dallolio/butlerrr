@@ -4,19 +4,13 @@
 \alias{as_fn}
 \title{Convert to Function}
 \usage{
-as_fn(.f, ..., .env = .GlobalEnv)
+as_fn(x, ...)
 }
 \arguments{
-\item{.f}{A one-sided formula or a function. If \code{.str = TRUE}, it also
+\item{x}{A one-sided formula or a function. If \code{.str = TRUE}, it also
 accepts a string.}
 
 \item{...}{Must remain empty.}
-
-\item{.env}{Only for \code{.str = TRUE}. The environment where to get the
-function.}
-
-\item{.str}{If \code{TRUE} (default), \code{.f} can also be a string. If \code{FALSE} and
-\code{.f} is not a one-sided formula or a function, it returns its input.}
 }
 \value{
 A function.
