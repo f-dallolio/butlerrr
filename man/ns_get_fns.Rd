@@ -12,17 +12,8 @@ ns_get_fns(x, exports_only = NULL)
 \item{exports_only}{If \code{TRUE} (default), it returns only the exported functions. If \code{FALSE}, the private ones are included too.}
 }
 \value{
-A named list of functions.
+A named list of functions or NULL if the environment of the function is not a namespace,
 }
 \description{
 Get Namespace Functions
-}
-\examples{
-ns_get_fns(mean)
-ns_get_fns(environment(mean))
-
-export_fns <- ns_get_fns("base")
-all_fns <- ns_get_fns("base", exports_only = FALSE)
-length(export_fns)
-length(all)
 }
