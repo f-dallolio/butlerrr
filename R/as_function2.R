@@ -55,5 +55,5 @@ as_function2 <- function (x, env = global_env(), ..., arg = caller_arg(x), call 
   if(is_string(x) && grepl(":", x)){
     x <- eval(str2lang(x), envir = env)
   }
-  as_function(x, env = env, arg = arg, call = call)
+  rlang::as_function(x, env = env, arg = arg, call = call)
 }
