@@ -67,13 +67,13 @@ fn_names <- function(..., env = global_env()) {
 #' @export
 fn_names0 <- function(..., env = global_env()) {
   x <- list2(...)
-  vapply(x, fn_name, "", env = env)
+  vapply(x, fn_name0, "", env = env)
 }
 #' @rdname fn-name
 #' @export
 fn_names2 <- function(..., env = global_env()) {
   x <- list2(...)
-  vapply(x, fn_name, "", env = env)
+  vapply(x, fn_name2, "", env = env)
 }
 
 .fn_get_name <- function(x, exports_ns = FALSE, private_ns = TRUE, env = global_env()) {
