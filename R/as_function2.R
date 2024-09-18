@@ -40,24 +40,21 @@
 #'
 #' @export
 #' @examples
-#' f <- as_function(~ .x + 1)
+#' f <- as_function2(~ .x + 1)
 #' f(10)
 #'
-#' g <- as_function(~ -1 * .)
+#' g <- as_function2(~ -1 * .)
 #' g(4)
 #'
-#' h <- as_function(~ .x - .y)
+#' h <- as_function2(~ .x - .y)
 #' h(6, 3)
 #'
-#' as_function("mean")
 #' as_function2("mean")
-#'
-#' as_function("base::mean")
 #' as_function2("base::mean")
 #'
 #' # Functions created from a formula have a special class:
-#' is_lambda(f)
-#' is_lambda(as_function(function() "foo"))
+#' rlang::is_lambda(f)
+#' rlang::is_lambda(as_function2(function() "foo"))
 as_function2 <- function (x, env = global_env(), ..., arg = caller_arg(x), call = caller_env()) {
   if(is_string(x) && grepl(":", x)){
     x <- eval(str2lang(x), envir = env)
