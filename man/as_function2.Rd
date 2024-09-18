@@ -17,29 +17,43 @@ as_function2(
 
 If a \strong{function}, it is used as is.
 
-If a \strong{formula}, e.g. \code{~ .x + 2}, it is converted to a function
-with up to two arguments: \code{.x} (single argument) or \code{.x} and \code{.y}
-(two arguments). The \code{.} placeholder can be used instead of \code{.x}.
-This allows you to create very compact anonymous functions (lambdas) with up
-to two inputs. Functions created from formulas have a special
-class. Use \code{is_lambda()} to test for it.
+If a \strong{formula}, e.g. \code{~ .x + 2}, it is converted to a function with up to
+two arguments: \code{.x} (single argument) or \code{.x} and \code{.y} (two arguments). The
+\code{.} placeholder can be used instead of \code{.x}. This allows you to create very
+compact anonymous functions (lambdas) with up to two inputs. Functions
+created from formulas have a special class. Use \code{is_lambda()} to test for
+it.
 
-If a \strong{string}, the function is looked up in \code{env}. Note that
-this interface is strictly for user convenience because of the
-scoping issues involved. Package developers should avoid
-supplying functions by name and instead supply them by value.
+If a \strong{string}, the function is looked up in \code{env}. Note that this
+interface is strictly for user convenience because of the scoping issues
+involved. Package developers should avoid supplying functions by name and
+instead supply them by value.
 
-Unlike \link[rlang:as_function]{rlang::as_function}, \code{as_function2()} also accepts a string input that includes namespace definition (e.g. \code{"pkg::fn"} or \code{"pkg:::fn"}).
-This is passed to \link[base:parse]{base::str2lang} and then evaluated in \code{env}.}
+Unlike \link[rlang:as_function]{rlang::as_function}, \code{as_function2()} also
+accepts a string input that includes namespace definition (e.g. \code{"pkg::fn"}
+or \code{"pkg:::fn"}). This is passed to \link[base:parse]{base::str2lang} and
+then evaluated in \code{env}.}
 
-\item{env}{Environment in which to fetch the function in case \code{x}
-is a string.}
+\item{env}{Environment in which to fetch the function in case \code{x} is a
+string.}
+
+\item{...}{These dots are for future extensions and must be empty.}
+
+\item{arg}{An argument name as a string. This argument will be mentioned in
+error messages as the input that is at the origin of a problem.}
+
+\item{call}{The execution environment of a currently running function, e.g.
+caller_env(). The function will be mentioned in error messages as the
+source of the error. See the call argument of abort() for more
+information..}
 }
 \description{
-\code{as_function2} is an extension of \link[rlang:as_function]{rlang::as_function} which transforms a one-sided formula into a function and
-powers the lambda syntax.
+\code{as_function2} is an extension of
+\link[rlang:as_function]{rlang::as_function} which transforms a one-sided
+formula into a function and powers the lambda syntax.
 
-The main difference is that it also accepts as string input that includes namespace definition (e.g. \code{"pkg::fn"} or \code{"pkg:::fn"}).
+The main difference is that it also accepts as string input that includes
+namespace definition (e.g. \code{"pkg::fn"} or \code{"pkg:::fn"}).
 }
 \examples{
 f <- as_function(~ .x + 1)
