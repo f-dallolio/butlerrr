@@ -29,7 +29,7 @@ get_pos2(x, ..., unname = TRUE)
 is a vector of length 1, it returns the output simplified to a scalar.}
 }
 \value{
-The extracted parts of \code{x}.
+The extracted elementsÎ of \code{x}.
 }
 \description{
 Extract Parts of an Object

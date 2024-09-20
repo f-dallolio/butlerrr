@@ -12,7 +12,7 @@
 #'   is a vector of length 1, it returns the output simplified to a scalar.
 #' @param unname `TRUE` or `FALSE` (default). If `TRUE` and input is a named atomic vector, selection is always performed on the input itself.
 #'
-#' @return The extracted parts of `x`.
+#' @return The extracted elementsÎ of `x`.
 #' @name get-pos
 #'
 NULL
