@@ -1,5 +1,9 @@
 ns_get_list <- function(.x, .p = NULL, ..., .default = NULL) {
-  env <- ns_env(.x)
+  if(is_namespace(.x)) {
+    env <- .x
+  } else {
+    env <- ns_env(.x)
+  }
   nms <- env_names(env)
   ns_list <- env_get_list(env = env, nms = nms, default = .default)
   if (is.null(.p)) {

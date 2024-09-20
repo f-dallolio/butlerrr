@@ -38,7 +38,7 @@
 #'   source of the error. See the call argument of abort() for more
 #'   information..
 #'
-#' @export
+#' @name as-function
 #' @examples
 #' f <- as_function2(~ .x + 1)
 #' f(10)
@@ -55,9 +55,34 @@
 #' # Functions created from a formula have a special class:
 #' rlang::is_lambda(f)
 #' rlang::is_lambda(as_function2(function() "foo"))
+NULL
+
+#' @rdname as-function
+#' @export
 as_function2 <- function (x, env = global_env(), ..., arg = caller_arg(x), call = caller_env()) {
+  stopifnot("These dots are for future extensions and must be empty" = ...length() == 0)
   if(is_string(x) && grepl(":", x)){
     x <- eval(str2lang(x), envir = env)
   }
   as_function(x, env = env, arg = arg, call = call)
 }
+#' @rdname as-function
+#' @export
+as_closure2 <- function (x, env = caller_env()) {
+  x <- as_function2(x, env = env)
+  rlang::as_closure(x, env)
+}
+#' @rdname as-function
+#' @export
+as_predicate2 <- function(x, ..., env = global_env()) {
+  .fn <- as_function2(x, env = env)
+  new_function(
+    args = pairlist2(... = quote(expr = )),
+    body = quote({
+      out <- .fn(...)
+      stopifnot("Predicate functions must return a single `TRUE` or `FALSE`" = is_bool(out))
+      out
+    })
+  )
+}
+

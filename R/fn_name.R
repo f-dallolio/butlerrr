@@ -117,3 +117,18 @@ fn_names2 <- function(..., env = global_env()) {
   if (private_ns) out[pvt_id] <- paste0(nss[pvt_id], ":::", out[pvt_id])
   out
 }
+
+
+
+fn_body_simple <- function (fn = caller_fn()) {
+  stopifnot(is_closure(fn))
+  body <- fn_body(fn)
+  body2 <- call_args(body)
+  if(is_lambda(fn) || length(body2) == 1) {
+    body2[[1]]
+  } else {
+    body
+  }
+}
+
+
